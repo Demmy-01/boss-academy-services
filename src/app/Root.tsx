@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+﻿import { useEffect } from 'react';
 import { Outlet, Link, useLocation } from 'react-router';
 import { ScrollingBanner } from './components/ScrollingBanner';
 import logoImg from '../images/logo.png';
@@ -60,7 +60,7 @@ export default function Root() {
     <div className="min-h-screen flex flex-col">
       <ScrollToTop />
 
-      {/* ── Navbar ── */}
+      {/* â”€â”€ Navbar â”€â”€ */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16 lg:h-20">
@@ -104,16 +104,17 @@ export default function Root() {
 
           </div>
         </div>
-        {/* Scrolling University Banner — inside sticky header so it never floats over hero */}
-        <ScrollingBanner />
+
+
       </header>
+      <ScrollingBanner />
 
       {/* Main Content */}
       <main className="flex-1">
         <Outlet />
       </main>
 
-      {/* ── Footer ── */}
+      {/* â”€â”€ Footer â”€â”€ */}
       <footer
         className="text-white"
         style={{ background: 'linear-gradient(135deg, #7f1d1d 0%, #9a1515 30%, #c0280a 65%, #e8400c 100%)' }}
@@ -216,7 +217,7 @@ export default function Root() {
           </div>
 
           <div className="pt-8 border-t border-white/20 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-white/50 text-xs">© 2026 Boss Academy. All rights reserved.</p>
+            <p className="text-white/50 text-xs">Â© 2026 Boss Academy. All rights reserved.</p>
             <div className="flex gap-6 text-xs text-white/50">
               <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
               <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
