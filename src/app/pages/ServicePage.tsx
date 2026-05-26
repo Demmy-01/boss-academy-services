@@ -76,7 +76,7 @@ const allServices: Record<string, ServiceData> = {
     icon: GraduationCap,
     gradientFrom: '#1e3a8a',
     gradientTo: '#3b5bdb',
-    heroImage: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=900&h=650&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=900&h=650&fit=crop',
     stats: [
       { value: '500+', label: 'Students Placed' },
       { value: '50+', label: 'Partner Universities' },
