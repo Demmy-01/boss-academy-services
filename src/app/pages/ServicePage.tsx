@@ -2051,8 +2051,9 @@ function FaqItem({ item, index }: { item: FaqItem; index: number }) {
   );
 }
 
-export default function ServicePage() {
-  const { slug } = useParams<{ slug: string }>();
+export default function ServicePage({ slug: propSlug }: { slug?: string }) {
+  const params = useParams<{ slug: string }>();
+  const slug = propSlug ?? params.slug;
   const service = slug ? allServices[slug] : null;
 
   if (!service) {
@@ -2088,9 +2089,7 @@ export default function ServicePage() {
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-white/60 text-sm mb-8">
-            <Link to="/" className="hover:text-white transition-colors">Home</Link>
-            <ChevronRight className="w-4 h-4" />
-            <span className="text-white/60">Our Services</span>
+            <span className="text-white/60">Boss Academy</span>
             <ChevronRight className="w-4 h-4" />
             <span className="text-white font-medium">{service.title}</span>
           </nav>
@@ -2386,7 +2385,7 @@ export default function ServicePage() {
                 return (
                   <Link
                     key={key}
-                    to={`/services/${key}`}
+                    to={`/${key}`}
                     className="flex items-center gap-4 bg-white rounded-xl p-5 border border-border hover:border-[#e8400c]/30 hover:shadow-md transition-all group"
                   >
                     <div className="w-10 h-10 bg-[#e8400c]/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-[#e8400c]/20 transition-colors">
