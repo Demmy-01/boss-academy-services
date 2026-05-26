@@ -107,23 +107,23 @@ const allServices: Record<string, ServiceData> = {
     process: [
       {
         step: '01',
-        title: 'Free Consultation',
-        desc: 'Meet our counselors to discuss goals, destinations, and budget. We assess your profile and recommend suitable universities.',
+        title: 'Submit Required Documents',
+        desc: 'Start by uploading your required documents — academic transcripts, passport, language certificates, and any other supporting materials. This helps us assess your profile immediately.',
       },
       {
         step: '02',
-        title: 'University Application',
-        desc: 'We prepare and submit your applications, handling all documentation, deadlines, and follow-ups on your behalf.',
+        title: 'Book a Consultation',
+        desc: 'Once your documents are submitted, book a session with our expert counselors. We review your profile, discuss your goals and budget, and recommend the best-fit European universities for you.',
       },
       {
         step: '03',
-        title: 'Visa Processing',
-        desc: 'Once admitted, we guide you through the student visa process, preparing all documents and coaching for interviews.',
+        title: 'University Application',
+        desc: 'We prepare and submit your applications to your chosen universities, handling all documentation, deadlines, and follow-ups on your behalf until you receive an offer letter.',
       },
       {
         step: '04',
-        title: 'Depart & Settle',
-        desc: 'We provide a comprehensive pre-departure briefing and connect you with our on-ground support network.',
+        title: 'Visa Processing & Departure',
+        desc: 'We guide you through the student visa process, prepare all required documents, coach you for any interviews, and provide a full pre-departure briefing so you arrive ready.',
       },
     ],
     benefits: [
