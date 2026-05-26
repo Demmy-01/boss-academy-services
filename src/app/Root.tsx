@@ -54,7 +54,15 @@ const servicesList = [
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // 'instant' bypasses any scroll-behavior:smooth CSS so the jump is immediate
+    try {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    } catch {
+      // Fallback for older browsers
+      window.scrollTo(0, 0);
+    }
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0; // For Safari
   }, [pathname]);
   return null;
 }
