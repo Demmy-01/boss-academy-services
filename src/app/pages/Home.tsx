@@ -213,7 +213,7 @@ const testimonials = [
 
 export default function Home() {
   return (
-    <div className="w-full bg-background">
+    <div className="w-full bg-background overflow-x-hidden">
       {/* Hero */}
       <section className="relative text-white py-16 sm:py-24 lg:py-36 px-4 overflow-hidden">
         <div
@@ -411,11 +411,11 @@ export default function Home() {
               Real stories from students and travelers who achieved their dreams with Boss Academy.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-7">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
             {testimonials.map((t, i) => (
               <div
                 key={i}
-                className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border border-border hover:shadow-xl transition-shadow"
+                className="bg-white rounded-2xl p-5 sm:p-6 shadow-lg border border-border hover:shadow-xl transition-shadow"
               >
                 <Quote className="w-8 h-8 text-[#2d4a9e]/20 mb-4" />
                 <div className="flex gap-1 mb-4">
@@ -424,16 +424,16 @@ export default function Home() {
                   ))}
                 </div>
                 <p className="text-foreground mb-6 leading-relaxed text-sm">"{t.content}"</p>
-                <div className="flex items-center gap-3 pt-4 border-t border-border">
+                <div className="flex items-center gap-3 pt-4 border-t border-border flex-wrap">
                   <div className="w-10 h-10 bg-[#2d4a9e]/10 rounded-full flex items-center justify-center text-[#2d4a9e] font-bold text-sm flex-shrink-0">
                     {t.initials}
                   </div>
-                  <div className="min-w-0">
+                  <div className="min-w-0 flex-1">
                     <div className="font-bold text-foreground text-sm">{t.name}</div>
                     <div className="text-xs text-muted-foreground truncate">{t.role}</div>
                   </div>
-                  <div className="ml-auto flex-shrink-0">
-                    <span className="text-[10px] bg-[#2d4a9e]/10 text-[#2d4a9e] px-2 py-0.5 rounded-full font-semibold whitespace-nowrap">
+                  <div className="flex-shrink-0">
+                    <span className="text-[10px] bg-[#2d4a9e]/10 text-[#2d4a9e] px-2 py-0.5 rounded-full font-semibold break-words">
                       {t.service}
                     </span>
                   </div>

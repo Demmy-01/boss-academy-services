@@ -2075,7 +2075,7 @@ export default function ServicePage() {
   const Icon = service.icon;
 
   return (
-    <div className="w-full bg-background">
+    <div className="w-full bg-background overflow-x-hidden">
       {/* Hero */}
       <section
         className="relative text-white py-14 sm:py-20 lg:py-28 px-4 overflow-hidden"
