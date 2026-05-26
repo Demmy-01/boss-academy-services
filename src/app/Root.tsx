@@ -16,8 +16,8 @@ import {
   X,
   ChevronDown,
   ArrowRight,
-  Phone,
   Mail,
+  Phone,
   Facebook,
   Twitter,
   Instagram,
@@ -111,9 +111,8 @@ export default function Root() {
             <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
               <Link
                 to="/"
-                className={`font-medium transition-colors text-sm ${
-                  location.pathname === '/' ? 'text-[#2d4a9e]' : 'text-foreground/75 hover:text-[#2d4a9e]'
-                }`}
+                className={`font-medium transition-colors text-sm ${location.pathname === '/' ? 'text-[#2d4a9e]' : 'text-foreground/75 hover:text-[#2d4a9e]'
+                  }`}
               >
                 Home
               </Link>
@@ -184,11 +183,17 @@ export default function Root() {
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-4">
               <a
-                href="tel:+1234567890"
-                className="flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors text-sm"
+                href="https://wa.me/2347059461257"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-[#25d366] hover:text-[#1ebe5d] transition-colors text-sm font-semibold"
               >
-                <Phone className="w-4 h-4" />
-                <span className="hidden xl:block">+123 456 7890</span>
+                {/* WhatsApp SVG icon */}
+                <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                  <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.845L.057 23.617a.75.75 0 0 0 .922.899l5.919-1.71A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.666-.497-5.2-1.367l-.374-.214-3.872 1.118 1.062-3.772-.233-.386A10 10 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
+                </svg>
+                <span className="hidden xl:block">+234 705 946 1257</span>
               </a>
               <button className="bg-[#2d4a9e] text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#2d4a9e]/90 transition-all shadow-md hover:shadow-lg">
                 Book Consultation
@@ -292,7 +297,20 @@ export default function Root() {
                 Contact
               </a>
 
-              <div className="pt-3 pb-2 px-1">
+              <div className="pt-3 pb-4 px-1 space-y-2">
+                <a
+                  href="https://wa.me/2347059461257"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full flex items-center justify-center gap-2 bg-[#25d366] text-white px-5 py-3 rounded-lg font-semibold hover:bg-[#1ebe5d] transition-all text-sm"
+                  onClick={() => setIsMobileOpen(false)}
+                >
+                  <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.845L.057 23.617a.75.75 0 0 0 .922.899l5.919-1.71A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.666-.497-5.2-1.367l-.374-.214-3.872 1.118 1.062-3.772-.233-.386A10 10 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
+                  </svg>
+                  Chat on WhatsApp
+                </a>
                 <button className="w-full bg-[#2d4a9e] text-white px-5 py-3 rounded-lg font-semibold hover:bg-[#2d4a9e]/90 transition-all text-sm">
                   Book Free Consultation
                 </button>
@@ -405,6 +423,28 @@ export default function Root() {
           </div>
         </div>
       </footer>
+
+      {/* Floating WhatsApp Chat Button */}
+      <a
+        href="https://wa.me/2347059461257"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat with us on WhatsApp"
+        className="fixed bottom-5 right-5 z-50 flex items-center gap-2.5 bg-[#25d366] text-white rounded-full shadow-2xl hover:shadow-[0_8px_30px_rgba(37,211,102,0.5)] hover:scale-105 transition-all duration-300 group"
+        style={{ padding: '14px' }}
+      >
+        {/* Pulse ring */}
+        <span className="absolute inset-0 rounded-full bg-[#25d366] animate-ping opacity-25" />
+        {/* WhatsApp SVG */}
+        <svg className="w-7 h-7 relative z-10 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.845L.057 23.617a.75.75 0 0 0 .922.899l5.919-1.71A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.666-.497-5.2-1.367l-.374-.214-3.872 1.118 1.062-3.772-.233-.386A10 10 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
+        </svg>
+        {/* Tooltip label — shows on hover desktop */}
+        <span className="hidden sm:block max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 ease-in-out whitespace-nowrap text-sm font-semibold pr-1">
+          Chat with us
+        </span>
+      </a>
     </div>
   );
 }
