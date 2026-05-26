@@ -2,18 +2,18 @@
 
 :root {
   --font-size: 16px;
-  --background: #ffffff;
-  --foreground: #1a1a2e;
-  --card: #ffffff;
-  --card-foreground: #1a1a2e;
+  --background: #FAF8F4;
+  --foreground: #0D1117;
+  --card: #FAF8F4;
+  --card-foreground: #0D1117;
   --popover: #ffffff;
-  --popover-foreground: #1a1a2e;
+  --popover-foreground: #0D1117;
   --primary: #e8400c;
   --primary-foreground: #ffffff;
-  --secondary: #f7f9fc;
-  --secondary-foreground: #1a1a2e;
-  --muted: #f1f3f7;
-  --muted-foreground: #64748b;
+  --secondary: #F2EFE9;
+  --secondary-foreground: #0D1117;
+  --muted: #EDE9E1;
+  --muted-foreground: #6B6760;
   --accent: #f97316;
   --accent-foreground: #ffffff;
   --destructive: #dc2626;
@@ -126,7 +126,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
 
   /**

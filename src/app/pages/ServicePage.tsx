@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState, useRef, useEffect } from 'react';
 import { useParams, Link } from 'react-router';
 import {
   GraduationCap,
@@ -13,15 +13,13 @@ import {
   Languages,
   ArrowRight,
   CheckCircle2,
-  Star,
   Award,
   Clock,
-  ChevronDown,
-  ChevronUp,
+  Star,
+  Quote,
   Phone,
   Mail,
   FileText,
-  Quote,
   ChevronRight,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
@@ -108,7 +106,7 @@ const allServices: Record<string, ServiceData> = {
       {
         step: '01',
         title: 'Submit Required Documents',
-        desc: 'Start by uploading your required documents — academic transcripts, passport, language certificates, and any other supporting materials. This helps us assess your profile immediately.',
+        desc: 'Start by uploading your required documents â€” academic transcripts, passport, language certificates, and any other supporting materials. This helps us assess your profile immediately.',
       },
       {
         step: '02',
@@ -128,7 +126,7 @@ const allServices: Record<string, ServiceData> = {
     ],
     benefits: [
       'Access to 1,000+ European universities',
-      'Tuition fees from €0 in Germany and beyond',
+      'Tuition fees from â‚¬0 in Germany and beyond',
       'Rich multicultural academic environment',
       'Opportunities to work part-time while studying',
       'Pathway to European residency and work rights',
@@ -141,7 +139,7 @@ const allServices: Record<string, ServiceData> = {
       },
       {
         q: 'How long does the application process take?',
-        a: 'The process typically takes 3–6 months from initial consultation to visa approval. We recommend starting at least 8 months before your intended start date.',
+        a: 'The process typically takes 3â€“6 months from initial consultation to visa approval. We recommend starting at least 8 months before your intended start date.',
       },
       {
         q: 'Are there scholarships available for international students?',
@@ -156,7 +154,7 @@ const allServices: Record<string, ServiceData> = {
       name: 'Amina Hassan',
       role: 'Studying at TU Berlin, Germany',
       content:
-        "Boss Academy turned what seemed impossible into reality. They guided me through every step — from choosing the right university to getting my visa approved. I am now studying Engineering in Berlin and loving every moment.",
+        "Boss Academy turned what seemed impossible into reality. They guided me through every step â€” from choosing the right university to getting my visa approved. I am now studying Engineering in Berlin and loving every moment.",
       initials: 'AH',
     },
     cta: {
@@ -235,7 +233,7 @@ const allServices: Record<string, ServiceData> = {
     faq: [
       {
         q: 'What IELTS score do I need for UK universities?',
-        a: 'Most UK universities require an overall IELTS score of 6.0–7.0. Top universities like Oxford and Cambridge may require higher. We provide institution-specific requirements.',
+        a: 'Most UK universities require an overall IELTS score of 6.0â€“7.0. Top universities like Oxford and Cambridge may require higher. We provide institution-specific requirements.',
       },
       {
         q: 'Can I work while studying in the UK?',
@@ -243,7 +241,7 @@ const allServices: Record<string, ServiceData> = {
       },
       {
         q: 'How much does it cost to study in the UK?',
-        a: 'Tuition fees for international students typically range from £10,000 to £38,000 per year. Living costs add approximately £12,000–£15,000 per year.',
+        a: 'Tuition fees for international students typically range from Â£10,000 to Â£38,000 per year. Living costs add approximately Â£12,000â€“Â£15,000 per year.',
       },
       {
         q: 'What is the Post-Study Work visa?',
@@ -341,7 +339,7 @@ const allServices: Record<string, ServiceData> = {
       },
       {
         q: 'How long does the process take?',
-        a: 'The process typically takes 6–18 months depending on the consulate, document completeness, and your specific case. We keep you updated throughout.',
+        a: 'The process typically takes 6â€“18 months depending on the consulate, document completeness, and your specific case. We keep you updated throughout.',
       },
       {
         q: 'What documents do I need?',
@@ -350,9 +348,9 @@ const allServices: Record<string, ServiceData> = {
     ],
     testimonial: {
       name: 'Maria Oliveira',
-      role: 'Now a Brazilian citizen, living in São Paulo',
+      role: 'Now a Brazilian citizen, living in SÃ£o Paulo',
       content:
-        "I was born in Brazil but left as a child. Boss Academy helped me reclaim my citizenship — something I thought would be nearly impossible. The process was smooth, professional, and faster than I expected.",
+        "I was born in Brazil but left as a child. Boss Academy helped me reclaim my citizenship â€” something I thought would be nearly impossible. The process was smooth, professional, and faster than I expected.",
       initials: 'MO',
     },
     cta: {
@@ -373,7 +371,7 @@ const allServices: Record<string, ServiceData> = {
     heroImage: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=900&h=650&fit=crop',
     stats: [
       { value: '99.5%', label: 'Approval Rate' },
-      { value: '3–5 Days', label: 'Turnaround' },
+      { value: '3â€“5 Days', label: 'Turnaround' },
       { value: '1,000+', label: 'Clients Served' },
     ],
     features: [
@@ -422,7 +420,7 @@ const allServices: Record<string, ServiceData> = {
     ],
     benefits: [
       'Country-specific format compliance guaranteed',
-      'Fast turnaround in 3–5 business days',
+      'Fast turnaround in 3â€“5 business days',
       'Certified translation services available',
       'Expert review before you submit',
       'Support for previously rejected applications',
@@ -431,7 +429,7 @@ const allServices: Record<string, ServiceData> = {
     faq: [
       {
         q: 'How much money do I need to show for a UK student visa?',
-        a: 'You need to show £1,023 per month (up to 9 months) for courses in London, or £820 per month outside London, plus your first year\'s tuition fees if not already paid.',
+        a: 'You need to show Â£1,023 per month (up to 9 months) for courses in London, or Â£820 per month outside London, plus your first year\'s tuition fees if not already paid.',
       },
       {
         q: 'Can a parent sponsor me?',
@@ -472,7 +470,7 @@ const allServices: Record<string, ServiceData> = {
     stats: [
       { value: '150+', label: 'Schools Served' },
       { value: '10,000+', label: 'Students Traveled' },
-      { value: '4.9★', label: 'School Rating' },
+      { value: '4.9â˜…', label: 'School Rating' },
     ],
     features: [
       {
@@ -570,7 +568,7 @@ const allServices: Record<string, ServiceData> = {
     stats: [
       { value: '1,000+', label: 'Travelers Served' },
       { value: '26+', label: 'Countries Covered' },
-      { value: '4.8★', label: 'Traveler Rating' },
+      { value: '4.8â˜…', label: 'Traveler Rating' },
     ],
     features: [
       {
@@ -581,7 +579,7 @@ const allServices: Record<string, ServiceData> = {
       {
         icon: MapPin,
         title: 'Custom Itineraries',
-        desc: 'Personalized travel plans tailored to your interests, budget, and duration — from city breaks to month-long tours.',
+        desc: 'Personalized travel plans tailored to your interests, budget, and duration â€” from city breaks to month-long tours.',
       },
       {
         icon: Award,
@@ -631,11 +629,11 @@ const allServices: Record<string, ServiceData> = {
       },
       {
         q: 'How far in advance should I apply for a Schengen visa?',
-        a: 'We recommend applying at least 6–8 weeks before your travel date. Some embassies have high demand, so earlier is better. We handle the process to ensure timely submission.',
+        a: 'We recommend applying at least 6â€“8 weeks before your travel date. Some embassies have high demand, so earlier is better. We handle the process to ensure timely submission.',
       },
       {
         q: 'What bank balance is required for a Schengen visa?',
-        a: 'Requirements vary by country and duration. Generally, you need to show approximately €50–100 per day per person. We provide exact requirements based on your destination and profile.',
+        a: 'Requirements vary by country and duration. Generally, you need to show approximately â‚¬50â€“100 per day per person. We provide exact requirements based on your destination and profile.',
       },
       {
         q: 'Can I travel independently or do I need a guided tour?',
@@ -646,7 +644,7 @@ const allServices: Record<string, ServiceData> = {
       name: 'Fatima Al-Rashid',
       role: 'Traveled 8 European countries in 3 weeks',
       content:
-        "Boss Academy handled everything — from my Schengen visa to hotel bookings in 5 different cities. I just showed up at the airport. The itinerary was perfect and the guides were excellent. Will definitely use them again.",
+        "Boss Academy handled everything â€” from my Schengen visa to hotel bookings in 5 different cities. I just showed up at the airport. The itinerary was perfect and the guides were excellent. Will definitely use them again.",
       initials: 'FA',
     },
     cta: {
@@ -667,7 +665,7 @@ const allServices: Record<string, ServiceData> = {
     heroImage: 'https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=900&h=650&fit=crop',
     stats: [
       { value: '500+', label: 'Happy Travelers' },
-      { value: '4.9★', label: 'Guest Rating' },
+      { value: '4.9â˜…', label: 'Guest Rating' },
       { value: '$899', label: 'Starting From' },
     ],
     features: [
@@ -696,7 +694,7 @@ const allServices: Record<string, ServiceData> = {
       {
         step: '01',
         title: 'Package Selection',
-        desc: 'Choose from honeymoon, adventure, family, or cultural packages — or let us build a custom Zanzibar itinerary.',
+        desc: 'Choose from honeymoon, adventure, family, or cultural packages â€” or let us build a custom Zanzibar itinerary.',
       },
       {
         step: '02',
@@ -744,7 +742,7 @@ const allServices: Record<string, ServiceData> = {
       name: 'Chidinma Okafor',
       role: 'Honeymooner, Zanzibar',
       content:
-        "Our Zanzibar honeymoon was nothing short of magical. Boss Academy organized everything perfectly — the resort was stunning, the spice farm tour was fascinating, and the sunset dhow cruise was unforgettable.",
+        "Our Zanzibar honeymoon was nothing short of magical. Boss Academy organized everything perfectly â€” the resort was stunning, the spice farm tour was fascinating, and the sunset dhow cruise was unforgettable.",
       initials: 'CO',
     },
     cta: {
@@ -765,7 +763,7 @@ const allServices: Record<string, ServiceData> = {
     heroImage: 'https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=900&h=650&fit=crop',
     stats: [
       { value: '50+', label: 'Trips Completed' },
-      { value: '15–20', label: 'Group Size' },
+      { value: '15â€“20', label: 'Group Size' },
       { value: '$1,499', label: 'Per Person (7 Days)' },
     ],
     features: [
@@ -827,7 +825,7 @@ const allServices: Record<string, ServiceData> = {
       },
       {
         q: 'What fitness level is required for gorilla trekking?',
-        a: 'Gorilla trekking involves hiking in mountainous terrain for 2–8 hours depending on the gorilla location. A reasonable fitness level is required. We provide detailed preparation advice.',
+        a: 'Gorilla trekking involves hiking in mountainous terrain for 2â€“8 hours depending on the gorilla location. A reasonable fitness level is required. We provide detailed preparation advice.',
       },
       {
         q: 'Is Rwanda safe for tourists?',
@@ -842,19 +840,19 @@ const allServices: Record<string, ServiceData> = {
       name: 'David Mensah',
       role: 'Joined the March Kigali Group Trip',
       content:
-        "The Kigali group trip was the best decision I made all year. The gorilla trekking was surreal — nothing prepares you for being that close to a mountain gorilla. And the people I met are now lifelong friends.",
+        "The Kigali group trip was the best decision I made all year. The gorilla trekking was surreal â€” nothing prepares you for being that close to a mountain gorilla. And the people I met are now lifelong friends.",
       initials: 'DM',
     },
     cta: {
       title: 'Join the Next Group Trip to Kigali',
-      subtitle: 'Limited spots available — secure your place today',
+      subtitle: 'Limited spots available â€” secure your place today',
       button: 'Reserve My Spot',
     },
   },
 
   'pre-tutorial': {
     title: 'Pre Tutorial',
-    tagline: 'Arrive Confident — Master the Fundamentals Before You Go',
+    tagline: 'Arrive Confident â€” Master the Fundamentals Before You Go',
     description:
       "Get ahead with our comprehensive pre-departure academic tutorials. Whether you're heading to university in Europe, the UK, or elsewhere, our expert instructors prepare you for your chosen field of study so you hit the ground running.",
     icon: BookOpen,
@@ -962,7 +960,7 @@ const allServices: Record<string, ServiceData> = {
     stats: [
       { value: '850+', label: 'Students Trained' },
       { value: '95%', label: 'DELF/DALF Pass Rate' },
-      { value: 'A1–C2', label: 'All Levels' },
+      { value: 'A1â€“C2', label: 'All Levels' },
     ],
     features: [
       {
@@ -1000,7 +998,7 @@ const allServices: Record<string, ServiceData> = {
       {
         step: '03',
         title: 'Weekly Classes',
-        desc: 'Attend weekly classes (2–4 hours depending on intensity), complete homework, and practice with conversation partners.',
+        desc: 'Attend weekly classes (2â€“4 hours depending on intensity), complete homework, and practice with conversation partners.',
       },
       {
         step: '04',
@@ -1019,11 +1017,11 @@ const allServices: Record<string, ServiceData> = {
     faq: [
       {
         q: 'How long does it take to reach B2 level from scratch?',
-        a: 'Reaching B2 typically requires 500–600 hours of study. With our intensive programs, you can achieve B2 in 12–18 months. Individual progress varies based on dedication.',
+        a: 'Reaching B2 typically requires 500â€“600 hours of study. With our intensive programs, you can achieve B2 in 12â€“18 months. Individual progress varies based on dedication.',
       },
       {
         q: 'What is the DELF/DALF exam?',
-        a: 'DELF (A1–B2) and DALF (C1–C2) are official French language certifications awarded by the French Ministry of Education, recognized worldwide by universities and employers.',
+        a: 'DELF (A1â€“B2) and DALF (C1â€“C2) are official French language certifications awarded by the French Ministry of Education, recognized worldwide by universities and employers.',
       },
       {
         q: 'Are online classes as effective as in-person?',
@@ -1052,7 +1050,7 @@ const allServices: Record<string, ServiceData> = {
     title: 'Study in Canada',
     tagline: "World-Class Education in the Heart of North America",
     description:
-      'Canada ranks among the top destinations for international students — world-class universities, a post-graduation work permit of up to 3 years, and a clear pathway to permanent residency. Our team guides you from university selection through to visa approval and arrival.',
+      'Canada ranks among the top destinations for international students â€” world-class universities, a post-graduation work permit of up to 3 years, and a clear pathway to permanent residency. Our team guides you from university selection through to visa approval and arrival.',
     icon: GraduationCap,
     gradientFrom: '#7c1d1d',
     gradientTo: '#dc2626',
@@ -1076,7 +1074,7 @@ const allServices: Record<string, ServiceData> = {
       {
         icon: Globe,
         title: 'Study Permit (SDS)',
-        desc: 'Expert guidance through Canadian student permit applications — including the fast-track Student Direct Stream.',
+        desc: 'Expert guidance through Canadian student permit applications â€” including the fast-track Student Direct Stream.',
       },
       {
         icon: Users,
@@ -1103,7 +1101,7 @@ const allServices: Record<string, ServiceData> = {
       {
         step: '04',
         title: 'Pre-Departure & Arrival',
-        desc: 'Comprehensive briefing on Canadian life, banking, and healthcare — plus connections to our on-ground network.',
+        desc: 'Comprehensive briefing on Canadian life, banking, and healthcare â€” plus connections to our on-ground network.',
       },
     ],
     benefits: [
@@ -1129,14 +1127,14 @@ const allServices: Record<string, ServiceData> = {
       },
       {
         q: 'How much do Canadian universities cost?',
-        a: 'Undergraduate tuition for international students ranges from CAD $15,000 to $35,000 per year. Living costs average CAD $12,000–$18,000 per year depending on city.',
+        a: 'Undergraduate tuition for international students ranges from CAD $15,000 to $35,000 per year. Living costs average CAD $12,000â€“$18,000 per year depending on city.',
       },
     ],
     testimonial: {
       name: 'Tunde Adebayo',
       role: 'Studying Computer Science at University of Toronto',
       content:
-        'Boss Academy made my Canadian dream happen. From choosing the right university to getting my study permit approved through SDS in 18 days — every step was seamless. I am now thriving in Toronto.',
+        'Boss Academy made my Canadian dream happen. From choosing the right university to getting my study permit approved through SDS in 18 days â€” every step was seamless. I am now thriving in Toronto.',
       initials: 'TA',
     },
     cta: {
@@ -1157,14 +1155,14 @@ const allServices: Record<string, ServiceData> = {
     heroImage: 'https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=900&h=650&fit=crop',
     stats: [
       { value: '600+', label: 'Travelers Served' },
-      { value: '4.8★', label: 'Traveler Rating' },
+      { value: '4.8â˜…', label: 'Traveler Rating' },
       { value: '95%', label: 'Visa Success Rate' },
     ],
     features: [
       {
         icon: Shield,
         title: 'UK Visitor Visa',
-        desc: 'Complete Standard Visitor Visa application support — document preparation, appointment booking, and guidance throughout.',
+        desc: 'Complete Standard Visitor Visa application support â€” document preparation, appointment booking, and guidance throughout.',
       },
       {
         icon: MapPin,
@@ -1227,14 +1225,14 @@ const allServices: Record<string, ServiceData> = {
       },
       {
         q: 'What is the best time to visit the UK?',
-        a: 'May to September offers the best weather. For fewer crowds and lower prices, April–June or September–October are ideal. December is magical for festive markets.',
+        a: 'May to September offers the best weather. For fewer crowds and lower prices, Aprilâ€“June or Septemberâ€“October are ideal. December is magical for festive markets.',
       },
     ],
     testimonial: {
       name: 'Blessing Okonkwo',
       role: 'Visited London, Edinburgh & Manchester',
       content:
-        'Boss Academy organized everything perfectly. My UK visa was approved in 12 days and the itinerary was incredible — Tower of London, Edinburgh Castle, and the Lake District. Every detail was handled professionally.',
+        'Boss Academy organized everything perfectly. My UK visa was approved in 12 days and the itinerary was incredible â€” Tower of London, Edinburgh Castle, and the Lake District. Every detail was handled professionally.',
       initials: 'BO',
     },
     cta: {
@@ -1248,26 +1246,26 @@ const allServices: Record<string, ServiceData> = {
     title: 'Visit Canada',
     tagline: 'Explore the Wild Beauty of the Great White North',
     description:
-      'From the thundering Niagara Falls and cosmopolitan Toronto to the jaw-dropping Rocky Mountains and French-flavored Quebec City — Canada delivers extraordinary experiences for every type of traveler. Complete visa assistance and bespoke packages included.',
+      'From the thundering Niagara Falls and cosmopolitan Toronto to the jaw-dropping Rocky Mountains and French-flavored Quebec City â€” Canada delivers extraordinary experiences for every type of traveler. Complete visa assistance and bespoke packages included.',
     icon: MapPin,
     gradientFrom: '#991b1b',
     gradientTo: '#f87171',
     heroImage: 'https://images.unsplash.com/photo-1517935706615-2717063c2225?w=900&h=650&fit=crop',
     stats: [
       { value: '400+', label: 'Travelers Served' },
-      { value: '4.7★', label: 'Traveler Rating' },
+      { value: '4.7â˜…', label: 'Traveler Rating' },
       { value: '93%', label: 'Visa Success Rate' },
     ],
     features: [
       {
         icon: Shield,
         title: 'Canada Visitor Visa (TRV)',
-        desc: 'Full support for Temporary Resident Visa applications — all documentation, forms, and guidance in one place.',
+        desc: 'Full support for Temporary Resident Visa applications â€” all documentation, forms, and guidance in one place.',
       },
       {
         icon: MapPin,
         title: 'Custom Itineraries',
-        desc: 'Tailored routes across Canada\'s vast provinces — Pacific Coast BC to Atlantic Maritimes and everything between.',
+        desc: 'Tailored routes across Canada\'s vast provinces â€” Pacific Coast BC to Atlantic Maritimes and everything between.',
       },
       {
         icon: Award,
@@ -1277,7 +1275,7 @@ const allServices: Record<string, ServiceData> = {
       {
         icon: Users,
         title: 'Local Expert Guides',
-        desc: 'Connect with expert local guides for authentic experiences — from whale watching to Northern Lights tours.',
+        desc: 'Connect with expert local guides for authentic experiences â€” from whale watching to Northern Lights tours.',
       },
     ],
     process: [
@@ -1294,7 +1292,7 @@ const allServices: Record<string, ServiceData> = {
       {
         step: '03',
         title: 'Booking & Logistics',
-        desc: 'All travel elements — flights, transfers, hotels, and experiences — are researched, booked, and confirmed.',
+        desc: 'All travel elements â€” flights, transfers, hotels, and experiences â€” are researched, booked, and confirmed.',
       },
       {
         step: '04',
@@ -1321,7 +1319,7 @@ const allServices: Record<string, ServiceData> = {
       },
       {
         q: 'When is the best time to visit Canada?',
-        a: 'Summer (June–August) is best for cities and national parks. Winter (December–February) is ideal for skiing and Northern Lights. Autumn (September–October) delivers stunning fall foliage.',
+        a: 'Summer (Juneâ€“August) is best for cities and national parks. Winter (Decemberâ€“February) is ideal for skiing and Northern Lights. Autumn (Septemberâ€“October) delivers stunning fall foliage.',
       },
       {
         q: 'What are the top places to visit in Canada?',
@@ -1332,7 +1330,7 @@ const allServices: Record<string, ServiceData> = {
       name: 'Ngozi Eze',
       role: 'Visited Niagara Falls, Toronto & Vancouver',
       content:
-        'Canada exceeded every expectation. Boss Academy sorted my visa quickly, built a brilliant itinerary, and the guides were fantastic. Banff National Park was breathtaking — I am already planning my return.',
+        'Canada exceeded every expectation. Boss Academy sorted my visa quickly, built a brilliant itinerary, and the guides were fantastic. Banff National Park was breathtaking â€” I am already planning my return.',
       initials: 'NE',
     },
     cta: {
@@ -1346,26 +1344,26 @@ const allServices: Record<string, ServiceData> = {
     title: 'Visit China',
     tagline: 'Journey Through 5,000 Years of Extraordinary Civilization',
     description:
-      'Walk the Great Wall at sunrise, marvel at the Terracotta Warriors, drift through the Li River, and feel the pulse of ultramodern Shanghai. China is a destination like no other — ancient wonders and futuristic skylines in a single journey. Complete visa assistance and expert bilingual guides included.',
+      'Walk the Great Wall at sunrise, marvel at the Terracotta Warriors, drift through the Li River, and feel the pulse of ultramodern Shanghai. China is a destination like no other â€” ancient wonders and futuristic skylines in a single journey. Complete visa assistance and expert bilingual guides included.',
     icon: Globe,
     gradientFrom: '#7c0000',
     gradientTo: '#dc2626',
     heroImage: 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=900&h=650&fit=crop',
     stats: [
       { value: '300+', label: 'Travelers Served' },
-      { value: '4.7★', label: 'Traveler Rating' },
+      { value: '4.7â˜…', label: 'Traveler Rating' },
       { value: '94%', label: 'Visa Success Rate' },
     ],
     features: [
       {
         icon: Shield,
         title: 'China Tourist Visa (L)',
-        desc: 'Complete L-visa application support — invitation letters, full itinerary documentation, and consulate submissions.',
+        desc: 'Complete L-visa application support â€” invitation letters, full itinerary documentation, and consulate submissions.',
       },
       {
         icon: MapPin,
         title: 'Expert-Designed Itineraries',
-        desc: 'Custom routes covering Beijing, Shanghai, Xi\'an, Guilin, and Chengdu — tailored to your interests and pace.',
+        desc: 'Custom routes covering Beijing, Shanghai, Xi\'an, Guilin, and Chengdu â€” tailored to your interests and pace.',
       },
       {
         icon: Award,
@@ -1401,12 +1399,12 @@ const allServices: Record<string, ServiceData> = {
       },
     ],
     benefits: [
-      'Walk the Great Wall — the ultimate bucket-list experience',
+      'Walk the Great Wall â€” the ultimate bucket-list experience',
       'Perfect blend of ancient history and futuristic cities',
       'World\'s most efficient high-speed rail network',
       'Expert bilingual guides for authentic, deep experiences',
       'Asia\'s premier food destination with incredible variety',
-      'Affordable luxury — premium experiences at great value',
+      'Affordable luxury â€” premium experiences at great value',
     ],
     faq: [
       {
@@ -1415,15 +1413,15 @@ const allServices: Record<string, ServiceData> = {
       },
       {
         q: 'Do I need to arrange internet access before visiting China?',
-        a: 'Yes — many western apps (Google, WhatsApp, Instagram) are blocked in mainland China. We advise on VPN options and alternative apps before your trip so you stay connected.',
+        a: 'Yes â€” many western apps (Google, WhatsApp, Instagram) are blocked in mainland China. We advise on VPN options and alternative apps before your trip so you stay connected.',
       },
       {
         q: 'How long does a Chinese tourist visa take?',
-        a: 'Standard processing takes 4–7 business days. Express services can reduce this to 2–3 days. We recommend applying at least 3 weeks before your intended travel date.',
+        a: 'Standard processing takes 4â€“7 business days. Express services can reduce this to 2â€“3 days. We recommend applying at least 3 weeks before your intended travel date.',
       },
       {
         q: 'What is the best time to visit China?',
-        a: 'Spring (April–May) and Autumn (September–October) offer the best weather across most of China. Summer can be hot and crowded; winter offers lower prices and fewer crowds.',
+        a: 'Spring (Aprilâ€“May) and Autumn (Septemberâ€“October) offer the best weather across most of China. Summer can be hot and crowded; winter offers lower prices and fewer crowds.',
       },
     ],
     testimonial: {
@@ -1444,21 +1442,21 @@ const allServices: Record<string, ServiceData> = {
     title: 'Visit Australia',
     tagline: 'Discover the Land Down Under in All Its Glory',
     description:
-      'The Sydney Opera House, the Great Barrier Reef, Uluru at dusk, and the wild Daintree Rainforest — Australia packs more natural wonders and iconic experiences into one country than almost anywhere on earth. Expert visa assistance and premium travel packages included.',
+      'The Sydney Opera House, the Great Barrier Reef, Uluru at dusk, and the wild Daintree Rainforest â€” Australia packs more natural wonders and iconic experiences into one country than almost anywhere on earth. Expert visa assistance and premium travel packages included.',
     icon: Globe,
     gradientFrom: '#044e54',
     gradientTo: '#0ea5e9',
     heroImage: 'https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=900&h=650&fit=crop',
     stats: [
       { value: '350+', label: 'Travelers Served' },
-      { value: '4.8★', label: 'Traveler Rating' },
+      { value: '4.8â˜…', label: 'Traveler Rating' },
       { value: '94%', label: 'Visa Success Rate' },
     ],
     features: [
       {
         icon: Shield,
         title: 'Australia Visitor Visa (600)',
-        desc: 'Complete Subclass 600 Visitor Visa support — document preparation, online application, and biometric guidance.',
+        desc: 'Complete Subclass 600 Visitor Visa support â€” document preparation, online application, and biometric guidance.',
       },
       {
         icon: MapPin,
@@ -1468,12 +1466,12 @@ const allServices: Record<string, ServiceData> = {
       {
         icon: Award,
         title: 'Premium Experiences',
-        desc: 'From sunrise at Uluru to Great Barrier Reef diving and Sydney Harbour Bridge climbs — iconic moments arranged.',
+        desc: 'From sunrise at Uluru to Great Barrier Reef diving and Sydney Harbour Bridge climbs â€” iconic moments arranged.',
       },
       {
         icon: Globe,
         title: 'Full Logistics',
-        desc: 'Domestic flights, campervan rentals, inter-city transfers — all arranged to match your itinerary.',
+        desc: 'Domestic flights, campervan rentals, inter-city transfers â€” all arranged to match your itinerary.',
       },
     ],
     process: [
@@ -1500,7 +1498,7 @@ const allServices: Record<string, ServiceData> = {
     ],
     benefits: [
       'Iconic natural wonders on every traveler\'s bucket list',
-      'English-speaking country — easy for all travelers',
+      'English-speaking country â€” easy for all travelers',
       'World-class beaches, wildlife, and food culture',
       'High safety standards and excellent infrastructure',
       'Unique wildlife found nowhere else on earth',
@@ -1509,26 +1507,26 @@ const allServices: Record<string, ServiceData> = {
     faq: [
       {
         q: 'How long does an Australian tourist visa take?',
-        a: 'eVisitor applications (eligible nationalities) are often processed within 24–72 hours. Standard Visitor Visa (600) applications typically take 20–60 days. We assess the best option for your nationality.',
+        a: 'eVisitor applications (eligible nationalities) are often processed within 24â€“72 hours. Standard Visitor Visa (600) applications typically take 20â€“60 days. We assess the best option for your nationality.',
       },
       {
         q: 'What is the best time to visit Australia?',
-        a: 'Australia is a year-round destination. September–November is ideal for Sydney and Melbourne. June–August is best for the Great Barrier Reef and tropical north. Uluru is best visited March–May or August–October.',
+        a: 'Australia is a year-round destination. Septemberâ€“November is ideal for Sydney and Melbourne. Juneâ€“August is best for the Great Barrier Reef and tropical north. Uluru is best visited Marchâ€“May or Augustâ€“October.',
       },
       {
         q: 'Can I see kangaroos and koalas in the wild?',
-        a: 'Absolutely! We include wildlife encounters in our itineraries — kangaroos in the wild at Kangaroo Island and koalas at wildlife sanctuaries in Queensland.',
+        a: 'Absolutely! We include wildlife encounters in our itineraries â€” kangaroos in the wild at Kangaroo Island and koalas at wildlife sanctuaries in Queensland.',
       },
       {
         q: 'Is Australia expensive to travel in?',
-        a: 'Australia is a mid-to-high cost destination but we offer packages across all budgets — from backpacker-friendly to luxury. We optimize every itinerary for the best value at your level.',
+        a: 'Australia is a mid-to-high cost destination but we offer packages across all budgets â€” from backpacker-friendly to luxury. We optimize every itinerary for the best value at your level.',
       },
     ],
     testimonial: {
       name: 'Adaeze Okafor',
       role: 'Visited Sydney, Great Barrier Reef & Uluru',
       content:
-        'Australia was the trip of my lifetime. Snorkeling at the Great Barrier Reef, watching the sunrise paint Uluru red, exploring Sydney Harbour — and my visa was approved in 3 days. Boss Academy delivered on every promise.',
+        'Australia was the trip of my lifetime. Snorkeling at the Great Barrier Reef, watching the sunrise paint Uluru red, exploring Sydney Harbour â€” and my visa was approved in 3 days. Boss Academy delivered on every promise.',
       initials: 'AO',
     },
     cta: {
@@ -1542,31 +1540,31 @@ const allServices: Record<string, ServiceData> = {
     title: 'Visit Kenya',
     tagline: 'Experience the Heart of Africa on Safari',
     description:
-      'Kenya is the ultimate African safari destination — home to the Great Migration in the Maasai Mara, snow-capped Mount Kenya, pristine Indian Ocean beaches at Diani, and the vibrant, modern capital of Nairobi. Discover East Africa\'s crown jewel with our expertly curated packages.',
+      'Kenya is the ultimate African safari destination â€” home to the Great Migration in the Maasai Mara, snow-capped Mount Kenya, pristine Indian Ocean beaches at Diani, and the vibrant, modern capital of Nairobi. Discover East Africa\'s crown jewel with our expertly curated packages.',
     icon: Palmtree,
     gradientFrom: '#14532d',
     gradientTo: '#16a34a',
     heroImage: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=900&h=650&fit=crop',
     stats: [
       { value: '250+', label: 'Travelers Served' },
-      { value: '4.9★', label: 'Traveler Rating' },
+      { value: '4.9â˜…', label: 'Traveler Rating' },
       { value: '$1,199', label: 'Safari From' },
     ],
     features: [
       {
         icon: Globe,
         title: 'Maasai Mara Safari',
-        desc: 'Expert-guided game drives in the Maasai Mara — Big Five sightings, the Great Migration, and golden savanna sunsets.',
+        desc: 'Expert-guided game drives in the Maasai Mara â€” Big Five sightings, the Great Migration, and golden savanna sunsets.',
       },
       {
         icon: MapPin,
         title: 'Coastal Escapes',
-        desc: 'Pristine beaches of Diani, Malindi, and Watamu on Kenya\'s Indian Ocean coast — perfect for relaxation and water sports.',
+        desc: 'Pristine beaches of Diani, Malindi, and Watamu on Kenya\'s Indian Ocean coast â€” perfect for relaxation and water sports.',
       },
       {
         icon: Award,
         title: 'Nairobi City Tours',
-        desc: 'Explore Kenya\'s dynamic capital — the Giraffe Centre, David Sheldrick Wildlife Trust, and vibrant markets.',
+        desc: 'Explore Kenya\'s dynamic capital â€” the Giraffe Centre, David Sheldrick Wildlife Trust, and vibrant markets.',
       },
       {
         icon: Users,
@@ -1588,7 +1586,7 @@ const allServices: Record<string, ServiceData> = {
       {
         step: '03',
         title: 'Lodges & Bookings',
-        desc: 'We book your safari lodges, bush camps, and coastal resorts — from mid-range to luxury options.',
+        desc: 'We book your safari lodges, bush camps, and coastal resorts â€” from mid-range to luxury options.',
       },
       {
         step: '04',
@@ -1597,7 +1595,7 @@ const allServices: Record<string, ServiceData> = {
       },
     ],
     benefits: [
-      'Witness the Great Migration — a natural wonder of the world',
+      'Witness the Great Migration â€” a natural wonder of the world',
       'Kenya eVisa available online for most nationalities',
       'Safari, beach, and city in one incredible itinerary',
       'One of Africa\'s best-value safari destinations',
@@ -1611,7 +1609,7 @@ const allServices: Record<string, ServiceData> = {
       },
       {
         q: 'Is Kenya safe for tourists?',
-        a: 'The main tourist areas — Maasai Mara, Nairobi, and the coast — are generally safe with appropriate precautions. We provide comprehensive safety briefings and use reputable operators throughout.',
+        a: 'The main tourist areas â€” Maasai Mara, Nairobi, and the coast â€” are generally safe with appropriate precautions. We provide comprehensive safety briefings and use reputable operators throughout.',
       },
       {
         q: 'Do I need vaccinations to visit Kenya?',
@@ -1638,9 +1636,9 @@ const allServices: Record<string, ServiceData> = {
 
   'celpip-tutorial': {
     title: 'CELPIP Tutorial',
-    tagline: 'Hit Your Target CLB Score — Expert CELPIP Coaching',
+    tagline: 'Hit Your Target CLB Score â€” Expert CELPIP Coaching',
     description:
-      'The Canadian English Language Proficiency Index Program (CELPIP) is required for Canadian immigration and citizenship applications. Our specialized coaches deliver targeted preparation across Listening, Reading, Writing, and Speaking — so you walk into the test ready to perform.',
+      'The Canadian English Language Proficiency Index Program (CELPIP) is required for Canadian immigration and citizenship applications. Our specialized coaches deliver targeted preparation across Listening, Reading, Writing, and Speaking â€” so you walk into the test ready to perform.',
     icon: BookOpen,
     gradientFrom: '#9a1515',
     gradientTo: '#e8400c',
@@ -1648,13 +1646,13 @@ const allServices: Record<string, ServiceData> = {
     stats: [
       { value: '400+', label: 'Students Coached' },
       { value: '93%', label: 'Target Score Rate' },
-      { value: 'CLB 7–10', label: 'Results Achieved' },
+      { value: 'CLB 7â€“10', label: 'Results Achieved' },
     ],
     features: [
       {
         icon: BookOpen,
         title: 'All 4 Components',
-        desc: 'Targeted coaching for Listening, Reading, Writing, and Speaking — the complete CELPIP-General test covered in full.',
+        desc: 'Targeted coaching for Listening, Reading, Writing, and Speaking â€” the complete CELPIP-General test covered in full.',
       },
       {
         icon: Award,
@@ -1669,7 +1667,7 @@ const allServices: Record<string, ServiceData> = {
       {
         icon: CheckCircle2,
         title: 'Personalized Feedback',
-        desc: 'Individualized feedback on every speaking and writing response — targeting the exact weaknesses holding you back.',
+        desc: 'Individualized feedback on every speaking and writing response â€” targeting the exact weaknesses holding you back.',
       },
     ],
     process: [
@@ -1696,8 +1694,8 @@ const allServices: Record<string, ServiceData> = {
     ],
     benefits: [
       'Only English test accepted for both IRCC immigration and Canadian citizenship',
-      'Fully computer-based — no speaking to an examiner',
-      'North American English accents — natural for everyday speakers',
+      'Fully computer-based â€” no speaking to an examiner',
+      'North American English accents â€” natural for everyday speakers',
       'Same-day results available for CELPIP Online',
       'Flexible coaching schedule including evenings and weekends',
       'Score improvement guaranteed within the program period',
@@ -1713,7 +1711,7 @@ const allServices: Record<string, ServiceData> = {
       },
       {
         q: 'How long does it take to improve my CELPIP score?',
-        a: 'Most students see meaningful improvement within 4–8 weeks of focused coaching. Those needing larger score jumps (2+ CLB levels) typically need 2–3 months of preparation.',
+        a: 'Most students see meaningful improvement within 4â€“8 weeks of focused coaching. Those needing larger score jumps (2+ CLB levels) typically need 2â€“3 months of preparation.',
       },
       {
         q: 'Can I retake CELPIP if I don\'t reach my target?',
@@ -1722,9 +1720,9 @@ const allServices: Record<string, ServiceData> = {
     ],
     testimonial: {
       name: 'Olawale Adeyemi',
-      role: 'Express Entry — CLB 9 Achieved',
+      role: 'Express Entry â€” CLB 9 Achieved',
       content:
-        'I needed CLB 9 for Express Entry and had tried twice before without success. Boss Academy\'s CELPIP coaching was transformative — targeted strategies, real feedback, and confidence on test day. CLB 9, first try after coaching.',
+        'I needed CLB 9 for Express Entry and had tried twice before without success. Boss Academy\'s CELPIP coaching was transformative â€” targeted strategies, real feedback, and confidence on test day. CLB 9, first try after coaching.',
       initials: 'OA',
     },
     cta: {
@@ -1736,7 +1734,7 @@ const allServices: Record<string, ServiceData> = {
 
   'chinese-language': {
     title: 'Chinese (Mandarin)',
-    tagline: 'Master Mandarin — The Language of a Rising World',
+    tagline: 'Master Mandarin â€” The Language of a Rising World',
     description:
       'Mandarin Chinese is spoken by over 1 billion people and is a powerful asset in international business, academic study, and travel. Our certified native Mandarin instructors guide you from complete beginner (HSK 1) to advanced proficiency (HSK 6) with cultural immersion woven into every lesson.',
     icon: Languages,
@@ -1746,18 +1744,18 @@ const allServices: Record<string, ServiceData> = {
     stats: [
       { value: '300+', label: 'Students Trained' },
       { value: '88%', label: 'HSK Pass Rate' },
-      { value: 'HSK 1–6', label: 'All Levels' },
+      { value: 'HSK 1â€“6', label: 'All Levels' },
     ],
     features: [
       {
         icon: BookOpen,
-        title: 'All Levels (HSK 1–6)',
+        title: 'All Levels (HSK 1â€“6)',
         desc: 'Structured courses from absolute beginner to business and academic Mandarin, following the official HSK framework.',
       },
       {
         icon: Award,
         title: 'HSK Exam Preparation',
-        desc: 'Targeted preparation for the official HSK exam — the internationally recognized Chinese proficiency certification.',
+        desc: 'Targeted preparation for the official HSK exam â€” the internationally recognized Chinese proficiency certification.',
       },
       {
         icon: Users,
@@ -1767,7 +1765,7 @@ const allServices: Record<string, ServiceData> = {
       {
         icon: Globe,
         title: 'Tone & Character Mastery',
-        desc: 'Focused training on Mandarin\'s four tones and character recognition — the essential foundations of real fluency.',
+        desc: 'Focused training on Mandarin\'s four tones and character recognition â€” the essential foundations of real fluency.',
       },
     ],
     process: [
@@ -1789,7 +1787,7 @@ const allServices: Record<string, ServiceData> = {
       {
         step: '04',
         title: 'HSK Certification',
-        desc: 'Prepare for and sit your HSK exam with coaching support — earning an internationally recognized certificate.',
+        desc: 'Prepare for and sit your HSK exam with coaching support â€” earning an internationally recognized certificate.',
       },
     ],
     benefits: [
@@ -1797,7 +1795,7 @@ const allServices: Record<string, ServiceData> = {
       'Massive competitive advantage in international business',
       'HSK certificate recognized by Chinese and global universities',
       'Pathway to study in China with scholarship opportunities',
-      'Small class sizes — maximum 12 students per group',
+      'Small class sizes â€” maximum 12 students per group',
       'Cultural immersion including Chinese history and business etiquette',
     ],
     faq: [
@@ -1807,7 +1805,7 @@ const allServices: Record<string, ServiceData> = {
       },
       {
         q: 'How long does it take to reach conversational Mandarin?',
-        a: 'Basic conversational ability (HSK 3) typically requires 200–300 hours of study. With our intensive programs, this is achievable in 6–9 months for dedicated students.',
+        a: 'Basic conversational ability (HSK 3) typically requires 200â€“300 hours of study. With our intensive programs, this is achievable in 6â€“9 months for dedicated students.',
       },
       {
         q: 'What is the HSK exam?',
@@ -1836,7 +1834,7 @@ const allServices: Record<string, ServiceData> = {
     title: 'IELTS Preparation',
     tagline: 'Achieve Your Target Band Score with Expert Coaching',
     description:
-      'IELTS is the world\'s most widely accepted English language test — required for UK, Canadian, Australian, and New Zealand immigration, as well as thousands of universities worldwide. Our experienced coaches deliver comprehensive preparation for both Academic and General Training versions.',
+      'IELTS is the world\'s most widely accepted English language test â€” required for UK, Canadian, Australian, and New Zealand immigration, as well as thousands of universities worldwide. Our experienced coaches deliver comprehensive preparation for both Academic and General Training versions.',
     icon: BookOpen,
     gradientFrom: '#7f1d1d',
     gradientTo: '#ea580c',
@@ -1855,7 +1853,7 @@ const allServices: Record<string, ServiceData> = {
       {
         icon: Award,
         title: 'All 4 Skills Covered',
-        desc: 'Intensive coaching for Listening, Reading, Writing (Tasks 1 & 2), and Speaking — with detailed feedback on each.',
+        desc: 'Intensive coaching for Listening, Reading, Writing (Tasks 1 & 2), and Speaking â€” with detailed feedback on each.',
       },
       {
         icon: Globe,
@@ -1865,7 +1863,7 @@ const allServices: Record<string, ServiceData> = {
       {
         icon: CheckCircle2,
         title: 'Writing Feedback',
-        desc: 'Detailed examiner-style feedback on every writing task — reports, graphs, letters, and Task 2 essays.',
+        desc: 'Detailed examiner-style feedback on every writing task â€” reports, graphs, letters, and Task 2 essays.',
       },
     ],
     process: [
@@ -1901,7 +1899,7 @@ const allServices: Record<string, ServiceData> = {
     faq: [
       {
         q: 'What IELTS score do I need for UK, Canada, or Australia?',
-        a: 'UK universities typically require 6.0–7.0. Canada Express Entry needs CLB 7 (≈ IELTS 6.0). Australian skilled migration often requires 6.0. We advise on the exact requirement for your specific goal.',
+        a: 'UK universities typically require 6.0â€“7.0. Canada Express Entry needs CLB 7 (â‰ˆ IELTS 6.0). Australian skilled migration often requires 6.0. We advise on the exact requirement for your specific goal.',
       },
       {
         q: 'How many times can I take IELTS?',
@@ -1913,14 +1911,14 @@ const allServices: Record<string, ServiceData> = {
       },
       {
         q: 'How long does IELTS preparation take?',
-        a: 'A 0.5 band improvement typically needs 4–6 weeks. A 1.0 band improvement usually requires 8–12 weeks of focused preparation. Those starting from lower bands may need 3–6 months.',
+        a: 'A 0.5 band improvement typically needs 4â€“6 weeks. A 1.0 band improvement usually requires 8â€“12 weeks of focused preparation. Those starting from lower bands may need 3â€“6 months.',
       },
     ],
     testimonial: {
       name: 'Yetunde Adegoke',
-      role: 'IELTS 7.5 — Now at Warwick University',
+      role: 'IELTS 7.5 â€” Now at Warwick University',
       content:
-        'I needed a 7.0 for my UK university offer and was scoring 6.0. Boss Academy\'s IELTS coaching was exceptional — the writing feedback was worth the entire program on its own. I achieved 7.5 overall and exceeded my target in every component.',
+        'I needed a 7.0 for my UK university offer and was scoring 6.0. Boss Academy\'s IELTS coaching was exceptional â€” the writing feedback was worth the entire program on its own. I achieved 7.5 overall and exceeded my target in every component.',
       initials: 'YA',
     },
     cta: {
@@ -1932,9 +1930,9 @@ const allServices: Record<string, ServiceData> = {
 
   'travel-insurance': {
     title: 'Travel Insurance',
-    tagline: 'Travel with Complete Confidence — Covered at Every Step',
+    tagline: 'Travel with Complete Confidence â€” Covered at Every Step',
     description:
-      'The unexpected should never derail your travel or study plans. We source comprehensive travel insurance solutions covering medical emergencies, trip cancellations, lost baggage, visa rejections, and more — from leading insurers at the best available rates.',
+      'The unexpected should never derail your travel or study plans. We source comprehensive travel insurance solutions covering medical emergencies, trip cancellations, lost baggage, visa rejections, and more â€” from leading insurers at the best available rates.',
     icon: Shield,
     gradientFrom: '#065f46',
     gradientTo: '#059669',
@@ -1948,7 +1946,7 @@ const allServices: Record<string, ServiceData> = {
       {
         icon: Shield,
         title: 'Medical Emergency Cover',
-        desc: 'Comprehensive medical coverage including hospitalization, emergency evacuation, and repatriation — up to $5M cover.',
+        desc: 'Comprehensive medical coverage including hospitalization, emergency evacuation, and repatriation â€” up to $5M cover.',
       },
       {
         icon: FileText,
@@ -1999,11 +1997,11 @@ const allServices: Record<string, ServiceData> = {
     faq: [
       {
         q: 'Is travel insurance mandatory for visa applications?',
-        a: 'Travel insurance is mandatory for Schengen visas (minimum €30,000 medical cover required). It is also highly recommended for UK, US, Canada, and Australian applications. We ensure your policy meets embassy requirements.',
+        a: 'Travel insurance is mandatory for Schengen visas (minimum â‚¬30,000 medical cover required). It is also highly recommended for UK, US, Canada, and Australian applications. We ensure your policy meets embassy requirements.',
       },
       {
         q: 'Does travel insurance cover visa rejections?',
-        a: 'Select policies include visa rejection cover — reimbursing non-refundable costs if your visa is rejected. We specifically source policies with this protection when you need it.',
+        a: 'Select policies include visa rejection cover â€” reimbursing non-refundable costs if your visa is rejected. We specifically source policies with this protection when you need it.',
       },
       {
         q: 'Can I get travel insurance with a pre-existing medical condition?',
@@ -2018,35 +2016,134 @@ const allServices: Record<string, ServiceData> = {
       name: 'Kemi Adesola',
       role: 'Covered on Her Europe Study Abroad Program',
       content:
-        'I had a medical emergency in Germany during my semester abroad. Boss Academy\'s travel insurance covered everything — hospital bills, repatriation, even accommodation while I recovered. The 24/7 support line was a lifeline. Never travel uninsured.',
+        'I had a medical emergency in Germany during my semester abroad. Boss Academy\'s travel insurance covered everything â€” hospital bills, repatriation, even accommodation while I recovered. The 24/7 support line was a lifeline. Never travel uninsured.',
       initials: 'KA',
     },
     cta: {
-      title: 'Travel Protected — Get Covered Today',
+      title: 'Travel Protected â€” Get Covered Today',
       subtitle: 'Get your travel insurance quote in minutes',
       button: 'Get Insurance Quote',
     },
   },
 };
 
+// â”€â”€ Inline FAQ with smooth height transition â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function FaqItem({ item, index }: { item: FaqItem; index: number }) {
   const [open, setOpen] = useState(false);
+  const answerRef = useRef<HTMLDivElement>(null);
   return (
-    <div className="border-b border-border last:border-0">
+    <div className="border-b last:border-0" style={{ borderColor: 'rgba(13,17,23,0.08)' }}>
       <button
+        id={`faq-q-${index}`}
         onClick={() => setOpen(!open)}
-        className="w-full flex items-start justify-between py-5 text-left gap-4"
+        className="w-full flex items-start justify-between py-6 text-left gap-6 group"
+        aria-expanded={open}
       >
-        <span className="font-semibold text-foreground text-sm leading-snug">{item.q}</span>
-        {open ? (
-          <ChevronUp className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-0.5" />
-        ) : (
-          <ChevronDown className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-0.5" />
-        )}
+        <span
+          className="text-base leading-snug transition-colors"
+          style={{
+            fontFamily: "'Playfair Display', Georgia, serif",
+            fontWeight: 600,
+            color: open ? '#e8400c' : '#0D1117',
+          }}
+        >
+          {item.q}
+        </span>
+        <span
+          className="flex-shrink-0 mt-0.5 w-5 h-5 transition-transform duration-300"
+          style={{ transform: open ? 'rotate(45deg)' : 'rotate(0deg)', color: '#e8400c' }}
+          aria-hidden
+        >
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" /></svg>
+        </span>
       </button>
-      {open && (
-        <p className="text-muted-foreground text-sm leading-relaxed pb-5">{item.a}</p>
-      )}
+      <div
+        ref={answerRef}
+        style={{
+          maxHeight: open ? `${answerRef.current?.scrollHeight ?? 400}px` : '0px',
+          overflow: 'hidden',
+          transition: 'max-height 0.4s cubic-bezier(0.4,0,0.2,1)',
+        }}
+      >
+        <p className="pb-6 leading-relaxed text-sm" style={{ color: '#6B6760', fontWeight: 300 }}>
+          {item.a}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+// â”€â”€ Scroll-fade-up hook â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function useFadeUp() {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(28px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.12 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+  return ref;
+}
+
+// â”€â”€ Count-up hook â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function useCountUp(target: string, duration = 1400) {
+  const [display, setDisplay] = useState('0');
+  const ref = useRef<HTMLSpanElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const num = parseFloat(target.replace(/[^0-9.]/g, ''));
+    if (isNaN(num)) { setDisplay(target); return; }
+    const suffix = target.replace(/[0-9.]/g, '');
+    let start: number | null = null;
+    let raf: number;
+    const obs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        obs.disconnect();
+        const step = (ts: number) => {
+          if (!start) start = ts;
+          const progress = Math.min((ts - start) / duration, 1);
+          const val = Math.round(progress * num);
+          setDisplay(`${val}${suffix}`);
+          if (progress < 1) raf = requestAnimationFrame(step);
+        };
+        raf = requestAnimationFrame(step);
+      }
+    }, { threshold: 0.5 });
+    obs.observe(el);
+    return () => { obs.disconnect(); cancelAnimationFrame(raf); };
+  }, [target, duration]);
+  return { ref, display };
+}
+
+// â”€â”€ Stat counter display â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function StatCount({ value, label }: { value: string; label: string }) {
+  const { ref, display } = useCountUp(value);
+  return (
+    <div>
+      <span
+        ref={ref}
+        className="block"
+        style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '2.5rem', fontWeight: 800, color: '#FAF8F4', lineHeight: 1 }}
+      >
+        {display}
+      </span>
+      <span className="block text-xs uppercase tracking-widest mt-1" style={{ color: 'rgba(250,248,244,0.55)' }}>
+        {label}
+      </span>
     </div>
   );
 }
@@ -2056,17 +2153,26 @@ export default function ServicePage({ slug: propSlug }: { slug?: string }) {
   const slug = propSlug ?? params.slug;
   const service = slug ? allServices[slug] : null;
 
+  // section refs for fade-up
+  const heroRef   = useFadeUp();
+  const featRef   = useFadeUp();
+  const procRef   = useFadeUp();
+  const whyRef    = useFadeUp();
+  const faqRef    = useFadeUp();
+  const otherRef  = useFadeUp();
+
+  // accordion state for features
+  const [openFeature, setOpenFeature] = useState<number | null>(null);
+
   if (!service) {
     return (
-      <div className="min-h-[60vh] flex items-center justify-center bg-background">
+      <div className="min-h-[60vh] flex items-center justify-center" style={{ background: '#FAF8F4' }}>
         <div className="text-center px-4">
-          <h1 className="text-3xl font-bold text-foreground mb-4">Service Not Found</h1>
-          <p className="text-muted-foreground mb-6">We could not find that service. Browse all our offerings below.</p>
-          <Link
-            to="/"
-            className="bg-[#e8400c] text-white px-6 py-3 rounded-lg font-semibold inline-flex items-center gap-2 hover:bg-[#e8400c]/90 transition-colors"
-          >
-            Back to Home <ArrowRight className="w-4 h-4" />
+          <p className="text-2xl font-bold mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: '#0D1117' }}>
+            Service Not Found
+          </p>
+          <Link to="/study-europe" className="inline-flex items-center gap-2 text-sm font-semibold" style={{ color: '#e8400c' }}>
+            Browse Services <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </div>
@@ -2074,253 +2180,437 @@ export default function ServicePage({ slug: propSlug }: { slug?: string }) {
   }
 
   const Icon = service.icon;
+  const WHATSAPP = 'https://wa.me/2347059461257';
+
+  // Decorative watermark characters (low opacity, scrolling strip)
+  const watermarkText = 'ç•™å­¦ ç­¾è¯ æ¬§æ´² è‹±å›½ åŠ æ‹¿å¤§ æ—…è¡Œ è¯­è¨€ ä¿é™© è¯æ˜Ž æ–‡åŒ– æ•™è‚² æœºä¼š æœªæ¥ æˆåŠŸ æŽ¢ç´¢ å…¥å­¦ å¤§å­¦ ç ”ç©¶ ç§»æ°‘ æŠ¤ç…§ ';
 
   return (
-    <div className="w-full bg-background overflow-x-hidden">
-      {/* Hero */}
+    <div className="w-full overflow-x-hidden" style={{ background: '#FAF8F4' }}>
+
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• HERO â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section
-        className="relative text-white py-14 sm:py-20 lg:py-28 px-4 overflow-hidden"
-        style={{ background: `linear-gradient(135deg, ${service.gradientFrom} 0%, ${service.gradientTo} 100%)` }}
+        className="relative overflow-hidden"
+        style={{
+          background: `${service.gradientFrom}`,
+          minHeight: '88vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-end',
+          paddingBottom: '80px',
+        }}
       >
-        <div className="absolute inset-0">
-          <div className="absolute top-10 left-8 w-72 h-72 bg-white/8 rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-8 w-80 h-80 bg-white/8 rounded-full blur-3xl" />
+        {/* Watermark scrolling strip */}
+        <div
+          aria-hidden
+          className="absolute top-0 left-0 w-full overflow-hidden pointer-events-none select-none"
+          style={{ height: '100%' }}
+        >
+          <div
+            style={{
+              position: 'absolute',
+              top: '18%',
+              whiteSpace: 'nowrap',
+              fontSize: '9rem',
+              fontWeight: 900,
+              letterSpacing: '0.15em',
+              color: 'rgba(250,248,244,0.045)',
+              fontFamily: "'Playfair Display', Georgia, serif",
+              animation: 'drift 60s linear infinite',
+              willChange: 'transform',
+            }}
+          >
+            {watermarkText.repeat(4)}
+          </div>
+          <div
+            style={{
+              position: 'absolute',
+              top: '55%',
+              whiteSpace: 'nowrap',
+              fontSize: '6rem',
+              fontWeight: 900,
+              letterSpacing: '0.2em',
+              color: 'rgba(250,248,244,0.025)',
+              fontFamily: "'Playfair Display', Georgia, serif",
+              animation: 'drift 90s linear infinite reverse',
+              willChange: 'transform',
+            }}
+          >
+            {watermarkText.repeat(4)}
+          </div>
         </div>
-        <div className="max-w-7xl mx-auto relative z-10">
+
+        {/* CSS animation */}
+        <style>{`
+          @keyframes drift {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+          }
+          @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(28px); }
+            to   { opacity: 1; transform: translateY(0); }
+          }
+          .hero-animate { animation: fadeUp 0.6s ease forwards; }
+          .hero-animate-delay { animation: fadeUp 0.6s 0.18s ease forwards; opacity: 0; }
+          .hero-animate-delay2 { animation: fadeUp 0.6s 0.34s ease forwards; opacity: 0; }
+          /* Navbar red underline slide-in */
+          .nav-link { position: relative; }
+          .nav-link::after {
+            content: ''; position: absolute; bottom: -2px; left: 0;
+            width: 0; height: 2px; background: #e8400c;
+            transition: width 0.25s ease;
+          }
+          .nav-link:hover::after { width: 100%; }
+          /* Sharp CTA hover invert */
+          .cta-primary {
+            background: #FAF8F4; color: #e8400c;
+            border: 2px solid #FAF8F4;
+            transition: background 0.2s, color 0.2s;
+          }
+          .cta-primary:hover { background: transparent; color: #FAF8F4; }
+          .cta-ghost {
+            background: transparent; color: rgba(250,248,244,0.85);
+            border: 2px solid rgba(250,248,244,0.35);
+            transition: background 0.2s, color 0.2s, border-color 0.2s;
+          }
+          .cta-ghost:hover { background: rgba(250,248,244,0.1); border-color: rgba(250,248,244,0.7); color: #FAF8F4; }
+          .cta-red {
+            background: #e8400c; color: #FAF8F4;
+            border: 2px solid #e8400c;
+            transition: background 0.2s, color 0.2s;
+          }
+          .cta-red:hover { background: transparent; color: #e8400c; }
+          .cta-red-outline {
+            background: transparent; color: #e8400c;
+            border: 2px solid #e8400c;
+            transition: background 0.2s, color 0.2s;
+          }
+          .cta-red-outline:hover { background: #e8400c; color: #FAF8F4; }
+        `}</style>
+
+        {/* Hero content */}
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10 w-full">
+
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-white/60 text-sm mb-8">
-            <span className="text-white/60">Boss Academy</span>
-            <ChevronRight className="w-4 h-4" />
-            <span className="text-white font-medium">{service.title}</span>
-          </nav>
+          <p className="hero-animate text-xs uppercase tracking-widest mb-10" style={{ color: 'rgba(250,248,244,0.5)' }}>
+            Boss Academy &nbsp;/&nbsp; {service.title}
+          </p>
 
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            {/* Mobile: image first */}
-            <div className="block lg:hidden rounded-2xl overflow-hidden shadow-2xl">
-              <img
-                src={service.heroImage}
-                alt={service.title}
-                className="w-full h-52 sm:h-64 object-cover"
-              />
-            </div>
-            <div>
-              <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-white/20">
-                <Icon className="w-4 h-4" />
-                <span className="text-sm font-semibold">{service.title}</span>
-              </div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-5 leading-[1.1]">
-                {service.tagline}
-              </h1>
-              <p className="text-sm sm:text-base lg:text-lg text-white/80 mb-7 leading-relaxed">
-                {service.description}
-              </p>
-              <div className="flex flex-col sm:flex-row flex-wrap gap-3 mb-8">
-                <button className="w-full sm:w-auto bg-white text-[#e8400c] px-7 py-3.5 rounded-xl font-bold hover:bg-gray-50 transition-all shadow-xl flex items-center justify-center gap-2 group">
-                  {service.cta.button}
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
-                <a
-                  href="#contact"
-                  className="w-full sm:w-auto border-2 border-white/40 text-white px-7 py-3.5 rounded-xl font-semibold hover:bg-white/10 transition-all flex items-center justify-center gap-2"
-                >
-                  <Phone className="w-4 h-4" />
-                  Contact Us
-                </a>
-              </div>
-              <div className="grid grid-cols-3 gap-4">
-                {service.stats.map((stat, i) => (
-                  <div key={i} className="bg-white/12 backdrop-blur-sm rounded-2xl p-4 border border-white/20 text-center hover:bg-white/18 transition-colors">
-                    <div className="text-2xl lg:text-3xl font-bold mb-0.5">{stat.value}</div>
-                    <div className="text-white/65 text-[11px] uppercase tracking-wide leading-snug">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            {/* Desktop: image on the right */}
-            <div className="hidden lg:block">
-              <div className="relative">
-                <img
-                  src={service.heroImage}
-                  alt={service.title}
-                  className="rounded-2xl shadow-2xl w-full h-[440px] object-cover"
-                />
-                <div className="absolute -bottom-4 -left-4 bg-white rounded-xl p-4 shadow-xl">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `${service.gradientFrom}18` }}>
-                      <Icon className="w-5 h-5" style={{ color: service.gradientFrom }} />
-                    </div>
-                    <div>
-                      <div className="text-xs text-muted-foreground font-medium">Boss Academy</div>
-                      <div className="text-sm font-bold text-foreground">{service.title}</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          {/* Headline */}
+          <h1
+            className="hero-animate-delay mb-5"
+            style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontSize: 'clamp(2.6rem, 6vw, 5rem)',
+              fontWeight: 800,
+              lineHeight: 1.05,
+              color: '#FAF8F4',
+              maxWidth: '780px',
+            }}
+          >
+            {service.tagline}
+          </h1>
+
+          {/* Sub-line */}
+          <p
+            className="hero-animate-delay2 mb-10"
+            style={{ color: 'rgba(250,248,244,0.72)', maxWidth: '540px', fontSize: '1.05rem', lineHeight: 1.65, fontWeight: 300 }}
+          >
+            {service.description.split('.')[0]}.
+          </p>
+
+          {/* CTA row */}
+          <div className="hero-animate-delay2 flex flex-wrap gap-3 mb-20">
+            <a
+              href={WHATSAPP}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cta-primary inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold"
+              style={{ borderRadius: '4px' }}
+            >
+              {service.cta.button} <ArrowRight className="w-4 h-4" />
+            </a>
+            <a
+              href="#how-it-works"
+              className="cta-ghost inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold"
+              style={{ borderRadius: '4px' }}
+            >
+              How It Works
+            </a>
+          </div>
+
+          {/* Floating stats â€” bottom right typographic accents */}
+          <div
+            className="flex flex-wrap gap-10"
+            style={{ borderTop: '1px solid rgba(250,248,244,0.15)', paddingTop: '28px' }}
+          >
+            {service.stats.map((stat, i) => (
+              <StatCount key={i} value={stat.value} label={stat.label} />
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Features */}
-      <section className="py-20 px-4 bg-background">
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• WHAT WE OFFER (accordion) â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      <section className="px-6 sm:px-8" style={{ paddingTop: '120px', paddingBottom: '120px' }}>
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-10 sm:mb-14">
-            <div className="inline-flex items-center gap-2 bg-[#e8400c]/10 text-[#e8400c] px-4 py-2 rounded-full mb-4">
-              <Award className="w-4 h-4" />
-              <span className="text-xs font-bold uppercase tracking-widest">What We Offer</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4">Our {service.title} Services Include</h2>
-            <p className="text-muted-foreground max-w-xl mx-auto text-sm sm:text-base">
-              Everything you need, handled by our expert team from start to finish.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {service.features.map((feature, i) => (
-              <div
-                key={i}
-                className="relative bg-white rounded-2xl p-6 border border-border hover:shadow-xl transition-all duration-300 group overflow-hidden"
-                style={{ borderTop: `3px solid ${service.gradientFrom}` }}
+          <div ref={featRef} className="grid lg:grid-cols-[280px_1fr] gap-16 items-start">
+
+            {/* Left: category title */}
+            <div className="lg:sticky" style={{ top: '120px' }}>
+              <p className="text-xs uppercase tracking-widest mb-4" style={{ color: '#e8400c' }}>What We Offer</p>
+              <h2
+                style={{
+                  fontFamily: "'Playfair Display', Georgia, serif",
+                  fontSize: 'clamp(2rem, 3vw, 2.75rem)',
+                  fontWeight: 800,
+                  color: '#0D1117',
+                  lineHeight: 1.15,
+                }}
               >
-                <div
-                  className="absolute -top-2 -right-2 text-8xl font-black leading-none select-none pointer-events-none"
-                  style={{ color: `${service.gradientFrom}09` }}
-                >
-                  {String(i + 1).padStart(2, '0')}
-                </div>
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-all group-hover:scale-110 group-hover:shadow-md"
-                  style={{ background: `linear-gradient(135deg, ${service.gradientFrom}1a, ${service.gradientTo}1a)` }}
-                >
-                  <feature.icon className="w-6 h-6" style={{ color: service.gradientFrom }} />
-                </div>
-                <h3 className="font-bold text-foreground mb-2 text-sm">{feature.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{feature.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works */}
-      <section className="py-20 px-4 bg-secondary">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-10 sm:mb-14">
-            <div className="inline-flex items-center gap-2 bg-[#e8400c]/10 text-[#e8400c] px-4 py-2 rounded-full mb-4">
-              <Clock className="w-4 h-4" />
-              <span className="text-xs font-bold uppercase tracking-widest">Simple Process</span>
+                {service.title} Services
+              </h2>
+              <div className="mt-6 w-8 h-px" style={{ background: '#e8400c' }} />
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4">How It Works</h2>
-            <p className="text-muted-foreground max-w-xl mx-auto text-sm sm:text-base">
-              A clear, guided process designed to make your experience smooth and stress-free.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {service.process.map((step, i) => (
-              <div key={i} className="relative">
-                {i < service.process.length - 1 && (
-                  <div className="hidden lg:block absolute top-6 left-full w-full h-0.5 -translate-x-1/2 z-0" style={{ background: `linear-gradient(90deg, ${service.gradientFrom}40, ${service.gradientTo}20)` }} />
-                )}
-                <div className="bg-white rounded-2xl p-6 border border-border relative z-10 h-full hover:shadow-md transition-shadow">
-                  <div
-                    className="w-12 h-12 text-white rounded-xl flex items-center justify-center font-bold text-sm mb-4 shadow-md"
-                    style={{ background: `linear-gradient(135deg, ${service.gradientFrom}, ${service.gradientTo})` }}
+
+            {/* Right: accordion list */}
+            <div className="divide-y" style={{ borderColor: 'rgba(13,17,23,0.08)' }}>
+              {service.features.map((feature, i) => (
+                <div key={i} className="py-6">
+                  <button
+                    className="w-full flex items-center justify-between gap-6 text-left group"
+                    onClick={() => setOpenFeature(openFeature === i ? null : i)}
+                    aria-expanded={openFeature === i}
+                    id={`feat-${i}`}
                   >
-                    {step.step}
+                    <div className="flex items-center gap-5">
+                      <span
+                        className="text-xs tabular-nums"
+                        style={{ color: '#e8400c', fontWeight: 600, minWidth: '24px' }}
+                      >
+                        0{i + 1}
+                      </span>
+                      <span
+                        className="transition-colors"
+                        style={{
+                          fontFamily: "'Playfair Display', Georgia, serif",
+                          fontSize: '1.15rem',
+                          fontWeight: 700,
+                          color: openFeature === i ? '#e8400c' : '#0D1117',
+                        }}
+                      >
+                        {feature.title}
+                      </span>
+                    </div>
+                    <feature.icon
+                      className="w-5 h-5 flex-shrink-0 transition-colors"
+                      style={{ color: openFeature === i ? '#e8400c' : '#6B6760' }}
+                    />
+                  </button>
+                  <div
+                    style={{
+                      maxHeight: openFeature === i ? '200px' : '0',
+                      overflow: 'hidden',
+                      transition: 'max-height 0.4s cubic-bezier(0.4,0,0.2,1)',
+                    }}
+                  >
+                    <p className="pt-4 pl-9 text-sm leading-relaxed" style={{ color: '#6B6760', fontWeight: 300 }}>
+                      {feature.desc}
+                    </p>
                   </div>
-                  <h3 className="font-bold text-foreground mb-2 text-sm">{step.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{step.desc}</p>
                 </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• HOW IT WORKS â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      <section
+        id="how-it-works"
+        style={{ paddingTop: '120px', paddingBottom: '120px', background: '#F2EFE9' }}
+      >
+        <div className="max-w-7xl mx-auto px-6 sm:px-8">
+          <div ref={procRef}>
+            <p className="text-xs uppercase tracking-widest mb-4" style={{ color: '#e8400c' }}>The Process</p>
+            <h2
+              className="mb-16"
+              style={{
+                fontFamily: "'Playfair Display', Georgia, serif",
+                fontSize: 'clamp(2rem, 3vw, 2.75rem)',
+                fontWeight: 800,
+                color: '#0D1117',
+                lineHeight: 1.15,
+              }}
+            >
+              How It Works
+            </h2>
+          </div>
+
+          {/* Horizontal timeline */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 relative">
+            {/* Connecting line */}
+            <div
+              className="hidden lg:block absolute"
+              style={{
+                top: '2.2rem',
+                left: '12.5%',
+                width: '75%',
+                height: '1px',
+                background: 'rgba(13,17,23,0.12)',
+              }}
+            />
+            {service.process.map((step, i) => (
+              <div key={i} className="relative px-4 pb-8 lg:pb-0">
+                {/* Large ghost number */}
+                <div
+                  aria-hidden
+                  className="absolute -top-4 left-2"
+                  style={{
+                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontSize: '7rem',
+                    fontWeight: 900,
+                    lineHeight: 1,
+                    color: 'rgba(232,64,12,0.06)',
+                    userSelect: 'none',
+                  }}
+                >
+                  {step.step}
+                </div>
+
+                {/* Dot on timeline */}
+                <div
+                  className="relative z-10 w-4 h-4 rounded-full mb-6 border-2"
+                  style={{ borderColor: '#e8400c', background: i === 0 ? '#e8400c' : '#F2EFE9' }}
+                />
+
+                <p
+                  className="text-xs uppercase tracking-widest mb-2"
+                  style={{ color: '#e8400c', fontWeight: 600 }}
+                >
+                  Step {step.step}
+                </p>
+                <h3
+                  className="mb-3"
+                  style={{
+                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontSize: '1rem',
+                    fontWeight: 700,
+                    color: '#0D1117',
+                  }}
+                >
+                  {step.title}
+                </h3>
+                <p className="text-sm leading-relaxed pr-4" style={{ color: '#6B6760', fontWeight: 300 }}>
+                  {step.desc}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Why Choose Boss Academy for this Service */}
-      <section className="py-20 px-4 bg-background">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• WHY CHOOSE US + TESTIMONIAL â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      <section style={{ paddingTop: '120px', paddingBottom: '120px' }}>
+        <div className="max-w-7xl mx-auto px-6 sm:px-8">
+          <div ref={whyRef} className="grid lg:grid-cols-2 gap-20 items-start">
+
+            {/* Benefits â€” 2-col typographic list */}
             <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style={{ background: `${service.gradientFrom}18`, color: service.gradientFrom }}>
-                <CheckCircle2 className="w-4 h-4" />
-                <span className="text-xs font-bold uppercase tracking-widest">Why Choose Us</span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-5 leading-tight">
+              <p className="text-xs uppercase tracking-widest mb-4" style={{ color: '#e8400c' }}>Why Choose Us</p>
+              <h2
+                className="mb-10"
+                style={{
+                  fontFamily: "'Playfair Display', Georgia, serif",
+                  fontSize: 'clamp(1.8rem, 2.8vw, 2.5rem)',
+                  fontWeight: 800,
+                  color: '#0D1117',
+                  lineHeight: 1.15,
+                }}
+              >
                 Why Boss Academy for {service.title}?
               </h2>
-              <p className="text-muted-foreground mb-7 leading-relaxed text-sm sm:text-base">
-                We have built our reputation on delivering results. Our specialized team combines deep expertise with personalized attention to ensure your success every step of the way.
-              </p>
-              <div className="space-y-2.5">
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-0">
                 {service.benefits.map((benefit, i) => (
-                  <div key={i} className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-secondary/60 transition-colors">
-                    <div
-                      className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
-                      style={{ background: `linear-gradient(135deg, ${service.gradientFrom}20, ${service.gradientTo}20)` }}
-                    >
-                      <CheckCircle2 className="w-3.5 h-3.5" style={{ color: service.gradientFrom }} />
-                    </div>
-                    <span className="text-foreground text-sm font-medium">{benefit}</span>
+                  <div
+                    key={i}
+                    className="py-4 pr-6"
+                    style={{
+                      borderLeft: '2px solid #e8400c',
+                      paddingLeft: '16px',
+                      marginBottom: '8px',
+                      marginRight: i % 2 === 0 ? '24px' : '0',
+                    }}
+                  >
+                    <p className="text-sm leading-snug" style={{ color: '#0D1117', fontWeight: 400 }}>{benefit}</p>
                   </div>
                 ))}
               </div>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <button
-                  className="bg-[#e8400c] text-white px-7 py-3.5 rounded-xl font-bold hover:bg-[#e8400c]/90 transition-all shadow-md flex items-center gap-2 group text-sm"
-                  style={{ background: `linear-gradient(135deg, ${service.gradientFrom}, ${service.gradientTo})` }}
+
+              <div className="mt-10">
+                <a
+                  href={WHATSAPP}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cta-red inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold"
+                  style={{ borderRadius: '4px' }}
                 >
-                  {service.cta.button}
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
+                  {service.cta.button} <ArrowRight className="w-4 h-4" />
+                </a>
               </div>
             </div>
 
-            {/* Testimonial Card */}
-            <div className="relative">
-              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-border">
-                <Quote className="w-10 h-10 text-[#e8400c]/20 mb-4" />
-                <div className="flex gap-1 mb-4">
-                  {Array.from({ length: 5 }).map((_, j) => (
-                    <Star key={j} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                <p className="text-foreground leading-relaxed mb-6 text-sm">
-                  "{service.testimonial.content}"
+            {/* Large pull-quote testimonial */}
+            <div>
+              <blockquote>
+                <p
+                  style={{
+                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontSize: 'clamp(1.5rem, 2.5vw, 2rem)',
+                    fontWeight: 700,
+                    fontStyle: 'italic',
+                    color: '#0D1117',
+                    lineHeight: 1.4,
+                    marginBottom: '32px',
+                  }}
+                >
+                  &ldquo;{service.testimonial.content}&rdquo;
                 </p>
-                <div className="flex items-center gap-3 pt-4 border-t border-border">
-                  <div className="w-11 h-11 rounded-full flex items-center justify-center font-bold text-sm text-white flex-shrink-0"
-                    style={{ background: `linear-gradient(135deg, ${service.gradientFrom}, ${service.gradientTo})` }}
-                  >
-                    {service.testimonial.initials}
-                  </div>
-                  <div>
-                    <div className="font-bold text-foreground text-sm">{service.testimonial.name}</div>
-                    <div className="text-xs text-muted-foreground">{service.testimonial.role}</div>
-                  </div>
+                <div style={{ borderTop: '1px solid rgba(232,64,12,0.3)', paddingTop: '20px' }}>
+                  <p className="text-sm font-semibold" style={{ color: '#0D1117' }}>
+                    {service.testimonial.name}
+                  </p>
+                  <p className="text-xs mt-1" style={{ color: '#6B6760', fontWeight: 300 }}>
+                    {service.testimonial.role}
+                  </p>
                 </div>
-              </div>
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-2xl opacity-10 -z-10"
-                style={{ background: `linear-gradient(135deg, ${service.gradientFrom}, ${service.gradientTo})` }}
-              />
+              </blockquote>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="py-20 px-4 bg-secondary">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-10 sm:mb-12">
-            <div className="inline-flex items-center gap-2 bg-[#e8400c]/10 text-[#e8400c] px-4 py-2 rounded-full mb-4">
-              <BookOpen className="w-4 h-4" />
-              <span className="text-xs font-bold uppercase tracking-widest">Common Questions</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4">Frequently Asked Questions</h2>
-            <p className="text-muted-foreground text-sm sm:text-base">
-              Everything you need to know about our {service.title} service.
-            </p>
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• FAQ â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      <section style={{ paddingTop: '120px', paddingBottom: '120px', background: '#F2EFE9' }}>
+        <div className="max-w-3xl mx-auto px-6 sm:px-8">
+          <div ref={faqRef}>
+            <p className="text-xs uppercase tracking-widest mb-4" style={{ color: '#e8400c' }}>Questions</p>
+            <h2
+              className="mb-12"
+              style={{
+                fontFamily: "'Playfair Display', Georgia, serif",
+                fontSize: 'clamp(1.8rem, 3vw, 2.5rem)',
+                fontWeight: 800,
+                color: '#0D1117',
+                lineHeight: 1.15,
+              }}
+            >
+              Frequently Asked
+            </h2>
           </div>
-          <div className="bg-white rounded-2xl border border-border shadow-sm overflow-hidden px-6">
+          <div>
             {service.faq.map((item, i) => (
               <FaqItem key={i} item={item} index={i} />
             ))}
@@ -2328,55 +2618,79 @@ export default function ServicePage({ slug: propSlug }: { slug?: string }) {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 px-4 relative overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{ background: `linear-gradient(135deg, ${service.gradientFrom} 0%, ${service.gradientTo} 100%)` }}
-        />
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
-        </div>
-        <div className="max-w-4xl mx-auto text-center relative z-10 text-white">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">{service.cta.title}</h2>
-          <p className="text-white/80 mb-8 text-sm sm:text-base max-w-xl mx-auto">{service.cta.subtitle}</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
-            <button className="bg-white text-[#e8400c] px-8 py-4 rounded-xl font-bold hover:bg-gray-50 transition-all shadow-xl flex items-center justify-center gap-2 group text-sm">
-              {service.cta.button}
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
-            <a
-              href="mailto:info@bossacademy.com"
-              className="border-2 border-white/40 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-all flex items-center justify-center gap-2 text-sm"
-            >
-              <Mail className="w-4 h-4" />
-              Email Us
-            </a>
-          </div>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-white/70 text-sm">
-            <a href="tel:+1234567890" className="flex items-center gap-2 hover:text-white transition-colors">
-              <Phone className="w-4 h-4" />
-              +123 456 7890
-            </a>
-            <a href="mailto:info@bossacademy.com" className="flex items-center gap-2 hover:text-white transition-colors">
-              <Mail className="w-4 h-4" />
-              info@bossacademy.com
-            </a>
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• CTA BAND â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      <section
+        style={{
+          background: '#e8400c',
+          paddingTop: '100px',
+          paddingBottom: '100px',
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-6 sm:px-8">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10">
+
+            {/* Left: big headline */}
+            <div style={{ maxWidth: '680px' }}>
+              <h2
+                style={{
+                  fontFamily: "'Playfair Display', Georgia, serif",
+                  fontSize: 'clamp(2.8rem, 6vw, 5rem)',
+                  fontWeight: 900,
+                  color: '#FAF8F4',
+                  lineHeight: 1.0,
+                }}
+              >
+                {service.cta.title}
+              </h2>
+              <p className="mt-5 text-base" style={{ color: 'rgba(250,248,244,0.72)', fontWeight: 300, maxWidth: '440px', lineHeight: 1.65 }}>
+                {service.cta.subtitle}
+              </p>
+            </div>
+
+            {/* Right: buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 lg:flex-shrink-0">
+              <a
+                href={WHATSAPP}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cta-primary inline-flex items-center gap-2 px-7 py-4 text-sm font-semibold"
+                style={{ borderRadius: '4px' }}
+              >
+                {service.cta.button} <ArrowRight className="w-4 h-4" />
+              </a>
+              <a
+                href="mailto:info@bossacademy.com"
+                className="cta-ghost inline-flex items-center gap-2 px-7 py-4 text-sm font-semibold"
+                style={{ borderRadius: '4px' }}
+              >
+                Email Us
+              </a>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* Other Services */}
-      <section className="py-16 px-4 bg-background">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-between mb-8">
-            <h3 className="text-xl font-bold text-foreground">Explore Other Services</h3>
-            <Link to="/" className="text-[#e8400c] text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">
-              View All <ArrowRight className="w-4 h-4" />
-            </Link>
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• OTHER SERVICES â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      <section style={{ paddingTop: '100px', paddingBottom: '100px' }}>
+        <div className="max-w-7xl mx-auto px-6 sm:px-8">
+          <div ref={otherRef} className="flex items-end justify-between mb-10">
+            <div>
+              <p className="text-xs uppercase tracking-widest mb-2" style={{ color: '#e8400c' }}>Continue Exploring</p>
+              <h3
+                style={{
+                  fontFamily: "'Playfair Display', Georgia, serif",
+                  fontSize: '1.6rem',
+                  fontWeight: 800,
+                  color: '#0D1117',
+                }}
+              >
+                Other Services
+              </h3>
+            </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 divide-y sm:divide-y-0 sm:divide-x" style={{ borderColor: 'rgba(13,17,23,0.1)', border: '1px solid rgba(13,17,23,0.1)' }}>
             {Object.entries(allServices)
               .filter(([key]) => key !== slug)
               .slice(0, 3)
@@ -2386,22 +2700,33 @@ export default function ServicePage({ slug: propSlug }: { slug?: string }) {
                   <Link
                     key={key}
                     to={`/${key}`}
-                    className="flex items-center gap-4 bg-white rounded-xl p-5 border border-border hover:border-[#e8400c]/30 hover:shadow-md transition-all group"
+                    className="group flex flex-col justify-between p-6 sm:p-8 transition-colors"
+                    style={{ minHeight: '180px' }}
+                    onMouseEnter={e => (e.currentTarget.style.background = '#F2EFE9')}
+                    onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
                   >
-                    <div className="w-10 h-10 bg-[#e8400c]/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-[#e8400c]/20 transition-colors">
-                      <SIcon className="w-5 h-5 text-[#e8400c]" />
+                    <div className="flex items-start justify-between mb-6">
+                      <SIcon className="w-5 h-5" style={{ color: '#e8400c' }} />
+                      <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: '#e8400c' }} />
                     </div>
-                    <div className="min-w-0">
-                      <div className="font-bold text-foreground text-sm group-hover:text-[#e8400c] transition-colors">{s.title}</div>
-                      <div className="text-xs text-muted-foreground truncate mt-0.5">{s.tagline}</div>
+                    <div>
+                      <p
+                        className="font-bold mb-1 group-hover:text-[#e8400c] transition-colors"
+                        style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '1rem', color: '#0D1117' }}
+                      >
+                        {s.title}
+                      </p>
+                      <p className="text-xs leading-snug" style={{ color: '#6B6760', fontWeight: 300 }}>
+                        {s.tagline}
+                      </p>
                     </div>
-                    <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-[#e8400c] flex-shrink-0 ml-auto" />
                   </Link>
                 );
               })}
           </div>
         </div>
       </section>
+
     </div>
   );
 }
