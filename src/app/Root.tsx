@@ -104,10 +104,9 @@ export default function Root() {
 
           </div>
         </div>
+        {/* Scrolling University Banner — inside sticky header so it never floats over hero */}
+        <ScrollingBanner />
       </header>
-
-      {/* Scrolling University Banner */}
-      <ScrollingBanner />
 
       {/* Main Content */}
       <main className="flex-1">

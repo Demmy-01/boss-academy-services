@@ -2182,25 +2182,89 @@ export default function ServicePage({ slug: propSlug }: { slug?: string }) {
   const Icon = service.icon;
   const WHATSAPP = 'https://wa.me/2347059461257';
 
-  // Decorative watermark characters (low opacity, scrolling strip)
-  const watermarkText = 'ç•™å­¦ ç­¾è¯ æ¬§æ´² è‹±å›½ åŠ æ‹¿å¤§ æ—…è¡Œ è¯­è¨€ ä¿é™© è¯æ˜Ž æ–‡åŒ– æ•™è‚² æœºä¼š æœªæ¥ æˆåŠŸ æŽ¢ç´¢ å…¥å­¦ å¤§å­¦ ç ”ç©¶ ç§»æ°‘ æŠ¤ç…§ ';
+  // Watermark = the service title repeated for atmospheric background texture
+  const watermarkText = `${service.title}  `;
 
   return (
     <div className="w-full overflow-x-hidden" style={{ background: '#FAF8F4' }}>
 
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• HERO â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      {/* ══════════════════ HERO ══════════════════ */}
+      <style>{`
+        @keyframes drift {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-50%); }
+        }
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(28px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .hero-animate { animation: fadeUp 0.6s ease forwards; }
+        .hero-animate-delay { animation: fadeUp 0.6s 0.18s ease forwards; opacity: 0; }
+        .hero-animate-delay2 { animation: fadeUp 0.6s 0.34s ease forwards; opacity: 0; }
+        .cta-primary {
+          background: #FAF8F4; color: #e8400c;
+          border: 2px solid #FAF8F4;
+          transition: background 0.2s, color 0.2s;
+        }
+        .cta-primary:hover { background: transparent; color: #FAF8F4; }
+        .cta-ghost {
+          background: transparent; color: rgba(250,248,244,0.85);
+          border: 2px solid rgba(250,248,244,0.35);
+          transition: background 0.2s, color 0.2s, border-color 0.2s;
+        }
+        .cta-ghost:hover { background: rgba(250,248,244,0.1); border-color: rgba(250,248,244,0.7); color: #FAF8F4; }
+        .cta-red {
+          background: #e8400c; color: #FAF8F4;
+          border: 2px solid #e8400c;
+          transition: background 0.2s, color 0.2s;
+        }
+        .cta-red:hover { background: transparent; color: #e8400c; }
+        .cta-red-outline {
+          background: transparent; color: #e8400c;
+          border: 2px solid #e8400c;
+          transition: background 0.2s, color 0.2s;
+        }
+        .cta-red-outline:hover { background: #e8400c; color: #FAF8F4; }
+      `}</style>
       <section
         className="relative overflow-hidden"
         style={{
-          background: `${service.gradientFrom}`,
-          minHeight: '88vh',
+          minHeight: '92vh',
+          paddingTop: '140px',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'flex-end',
           paddingBottom: '80px',
         }}
       >
-        {/* Watermark scrolling strip */}
+        {/* Full-bleed hero image */}
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url(${service.heroImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center top',
+            backgroundRepeat: 'no-repeat',
+          }}
+        />
+
+        {/* Dark gradient overlay for legibility */}
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            background: `linear-gradient(
+              to bottom,
+              ${service.gradientFrom}cc 0%,
+              ${service.gradientFrom}99 30%,
+              rgba(13,17,23,0.75) 65%,
+              rgba(13,17,23,0.92) 100%
+            )`,
+          }}
+        />
+
+        {/* Watermark scrolling strip — over the photo */}
         <div
           aria-hidden
           className="absolute top-0 left-0 w-full overflow-hidden pointer-events-none select-none"
@@ -2214,7 +2278,7 @@ export default function ServicePage({ slug: propSlug }: { slug?: string }) {
               fontSize: '9rem',
               fontWeight: 900,
               letterSpacing: '0.15em',
-              color: 'rgba(250,248,244,0.045)',
+              color: 'rgba(250,248,244,0.04)',
               fontFamily: "'Playfair Display', Georgia, serif",
               animation: 'drift 60s linear infinite',
               willChange: 'transform',
@@ -2230,7 +2294,7 @@ export default function ServicePage({ slug: propSlug }: { slug?: string }) {
               fontSize: '6rem',
               fontWeight: 900,
               letterSpacing: '0.2em',
-              color: 'rgba(250,248,244,0.025)',
+              color: 'rgba(250,248,244,0.02)',
               fontFamily: "'Playfair Display', Georgia, serif",
               animation: 'drift 90s linear infinite reverse',
               willChange: 'transform',
@@ -2291,12 +2355,22 @@ export default function ServicePage({ slug: propSlug }: { slug?: string }) {
         {/* Hero content */}
         <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10 w-full">
 
-          {/* Breadcrumb */}
-          <p className="hero-animate text-xs uppercase tracking-widest mb-10" style={{ color: 'rgba(250,248,244,0.5)' }}>
-            Boss Academy &nbsp;/&nbsp; {service.title}
-          </p>
+          {/* Service title label — clearly visible */}
+          <div className="hero-animate mb-5 flex items-center gap-3">
+            <span
+              className="inline-flex items-center gap-2 px-4 py-1.5 text-xs font-bold uppercase tracking-widest"
+              style={{
+                background: '#e8400c',
+                color: '#FAF8F4',
+                borderRadius: '2px',
+              }}
+            >
+              <Icon className="w-3.5 h-3.5" />
+              {service.title}
+            </span>
+          </div>
 
-          {/* Headline */}
+          {/* Tagline headline */}
           <h1
             className="hero-animate-delay mb-5"
             style={{
@@ -2314,7 +2388,7 @@ export default function ServicePage({ slug: propSlug }: { slug?: string }) {
           {/* Sub-line */}
           <p
             className="hero-animate-delay2 mb-10"
-            style={{ color: 'rgba(250,248,244,0.72)', maxWidth: '540px', fontSize: '1.05rem', lineHeight: 1.65, fontWeight: 300 }}
+            style={{ color: 'rgba(250,248,244,0.75)', maxWidth: '540px', fontSize: '1.05rem', lineHeight: 1.65, fontWeight: 300 }}
           >
             {service.description.split('.')[0]}.
           </p>
@@ -2730,3 +2804,4 @@ export default function ServicePage({ slug: propSlug }: { slug?: string }) {
     </div>
   );
 }
+
