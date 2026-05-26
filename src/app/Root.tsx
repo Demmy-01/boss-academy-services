@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Outlet, Link, useLocation } from 'react-router';
 import { ScrollingBanner } from './components/ScrollingBanner';
+import logoImg from '../images/logo.png';
 import {
   GraduationCap,
   Globe,
@@ -105,21 +106,19 @@ export default function Root() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3 group flex-shrink-0">
-              <div className="w-9 h-9 lg:w-10 lg:h-10 bg-[#2d4a9e] rounded-xl flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
-                <GraduationCap className="w-5 h-5 lg:w-6 lg:h-6 text-white" />
-              </div>
-              <div>
-                <div className="text-base lg:text-lg font-bold text-foreground leading-none">Boss Academy</div>
-                <div className="text-[10px] lg:text-xs text-muted-foreground hidden sm:block">Travel & Learning Agency</div>
-              </div>
+            <Link to="/" className="flex items-center flex-shrink-0">
+              <img
+                src={logoImg}
+                alt="Boss Academy"
+                className="h-10 lg:h-12 w-auto object-contain"
+              />
             </Link>
 
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
               <Link
                 to="/"
-                className={`font-medium transition-colors text-sm ${location.pathname === '/' ? 'text-[#2d4a9e]' : 'text-foreground/75 hover:text-[#2d4a9e]'
+                className={`font-medium transition-colors text-sm ${location.pathname === '/' ? 'text-[#e8400c]' : 'text-foreground/75 hover:text-[#e8400c]'
                   }`}
               >
                 Home
@@ -129,7 +128,7 @@ export default function Root() {
               <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setIsServicesOpen(!isServicesOpen)}
-                  className="flex items-center gap-1.5 text-foreground/75 hover:text-[#2d4a9e] font-medium transition-colors text-sm"
+                  className="flex items-center gap-1.5 text-foreground/75 hover:text-[#e8400c] font-medium transition-colors text-sm"
                 >
                   <span className="text-xs font-bold tracking-widest uppercase">Our Services</span>
                   <ChevronDown
@@ -150,8 +149,8 @@ export default function Root() {
                           className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-secondary transition-colors group"
                           onClick={() => setIsServicesOpen(false)}
                         >
-                          <div className="w-8 h-8 bg-[#2d4a9e]/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-[#2d4a9e]/20 transition-colors">
-                            <service.icon className="w-4 h-4 text-[#2d4a9e]" />
+                          <div className="w-8 h-8 bg-[#e8400c]/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-[#e8400c]/20 transition-colors">
+                            <service.icon className="w-4 h-4 text-[#e8400c]" />
                           </div>
                           <div className="min-w-0">
                             <div className="font-semibold text-foreground text-sm leading-tight">{service.label}</div>
@@ -165,7 +164,7 @@ export default function Root() {
                       <Link
                         to="/"
                         onClick={() => setIsServicesOpen(false)}
-                        className="text-xs text-[#2d4a9e] font-semibold flex items-center gap-1 hover:gap-1.5 transition-all"
+                        className="text-xs text-[#e8400c] font-semibold flex items-center gap-1 hover:gap-1.5 transition-all"
                       >
                         View All <ArrowRight className="w-3.5 h-3.5" />
                       </Link>
@@ -176,13 +175,13 @@ export default function Root() {
 
               <a
                 href="#about"
-                className="text-foreground/75 hover:text-[#2d4a9e] font-medium transition-colors text-sm"
+                className="text-foreground/75 hover:text-[#e8400c] font-medium transition-colors text-sm"
               >
                 About
               </a>
               <a
                 href="#contact"
-                className="text-foreground/75 hover:text-[#2d4a9e] font-medium transition-colors text-sm"
+                className="text-foreground/75 hover:text-[#e8400c] font-medium transition-colors text-sm"
               >
                 Contact
               </a>
@@ -203,7 +202,7 @@ export default function Root() {
                 </svg>
                 <span className="hidden xl:block">+234 705 946 1257</span>
               </a>
-              <button className="bg-[#2d4a9e] text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#2d4a9e]/90 transition-all shadow-md hover:shadow-lg">
+              <button className="bg-[#e8400c] text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#e8400c]/90 transition-all shadow-md hover:shadow-lg">
                 Book Consultation
               </button>
             </div>
@@ -254,7 +253,7 @@ export default function Root() {
                         className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-secondary transition-colors active:bg-secondary/80"
                         onClick={() => setIsMobileOpen(false)}
                       >
-                        <service.icon className="w-4 h-4 text-[#2d4a9e] flex-shrink-0" />
+                        <service.icon className="w-4 h-4 text-[#e8400c] flex-shrink-0" />
                         <span className="text-sm text-foreground font-medium">{service.label}</span>
                       </Link>
                     ))}
@@ -269,7 +268,7 @@ export default function Root() {
                         className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-secondary transition-colors active:bg-secondary/80"
                         onClick={() => setIsMobileOpen(false)}
                       >
-                        <service.icon className="w-4 h-4 text-[#2d4a9e] flex-shrink-0" />
+                        <service.icon className="w-4 h-4 text-[#e8400c] flex-shrink-0" />
                         <span className="text-sm text-foreground font-medium">{service.label}</span>
                       </Link>
                     ))}
@@ -284,7 +283,7 @@ export default function Root() {
                         className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-secondary transition-colors active:bg-secondary/80"
                         onClick={() => setIsMobileOpen(false)}
                       >
-                        <service.icon className="w-4 h-4 text-[#2d4a9e] flex-shrink-0" />
+                        <service.icon className="w-4 h-4 text-[#e8400c] flex-shrink-0" />
                         <span className="text-sm text-foreground font-medium">{service.label}</span>
                       </Link>
                     ))}
@@ -319,7 +318,7 @@ export default function Root() {
                   </svg>
                   Chat on WhatsApp
                 </a>
-                <button className="w-full bg-[#2d4a9e] text-white px-5 py-3 rounded-lg font-semibold hover:bg-[#2d4a9e]/90 transition-all text-sm">
+                <button className="w-full bg-[#e8400c] text-white px-5 py-3 rounded-lg font-semibold hover:bg-[#e8400c]/90 transition-all text-sm">
                   Book Free Consultation
                 </button>
               </div>
@@ -342,14 +341,12 @@ export default function Root() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
             {/* Company */}
             <div>
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-9 h-9 bg-[#2d4a9e] rounded-xl flex items-center justify-center">
-                  <GraduationCap className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <div className="text-base font-bold">Boss Academy</div>
-                  <div className="text-xs text-white/50">Travel & Learning Agency</div>
-                </div>
+              <div className="flex items-center mb-5">
+                <img
+                  src={logoImg}
+                  alt="Boss Academy"
+                  className="h-10 w-auto object-contain brightness-0 invert"
+                />
               </div>
               <p className="text-white/60 text-sm leading-relaxed mb-5">
                 Transforming lives through education and travel. Your trusted partner for study abroad, citizenship, travel, and professional development.
@@ -359,7 +356,7 @@ export default function Root() {
                   <a
                     key={i}
                     href="#"
-                    className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center hover:bg-[#2d4a9e] transition-colors"
+                    className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center hover:bg-[#e8400c] transition-colors"
                   >
                     <Icon className="w-3.5 h-3.5" />
                   </a>
@@ -406,15 +403,15 @@ export default function Root() {
               <h4 className="font-bold text-xs uppercase tracking-widest mb-4 text-white/50">Contact Us</h4>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
-                  <Phone className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#2d4a9e]" />
+                  <Phone className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#e8400c]" />
                   <span className="text-white/60 text-sm">+123 456 7890</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Mail className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#2d4a9e]" />
+                  <Mail className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#e8400c]" />
                   <span className="text-white/60 text-sm">info@bossacademy.com</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#2d4a9e]" />
+                  <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#e8400c]" />
                   <span className="text-white/60 text-sm">123 Academy Street, Education City</span>
                 </li>
               </ul>

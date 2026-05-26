@@ -74,8 +74,8 @@ const allServices: Record<string, ServiceData> = {
     description:
       'Get expert guidance on university applications, visa processing, and settlement. Our experienced counselors have helped 500+ students gain admission to prestigious European universities across Germany, France, the Netherlands, Spain, and more.',
     icon: GraduationCap,
-    gradientFrom: '#1e3a8a',
-    gradientTo: '#3b5bdb',
+    gradientFrom: '#9a1515',
+    gradientTo: '#f97316',
     heroImage: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=900&h=650&fit=crop',
     stats: [
       { value: '500+', label: 'Students Placed' },
@@ -172,8 +172,8 @@ const allServices: Record<string, ServiceData> = {
     description:
       'Access the best universities in the United Kingdom including Oxford, Cambridge, Imperial College, UCL, and many more. We handle everything from UCAS applications to Tier 4 visa processing and pre-departure support.',
     icon: Globe,
-    gradientFrom: '#1e3a8a',
-    gradientTo: '#2563eb',
+    gradientFrom: '#9a1515',
+    gradientTo: '#f97316',
     heroImage: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=900&h=650&fit=crop',
     stats: [
       { value: '300+', label: 'Students Placed' },
@@ -1152,8 +1152,8 @@ const allServices: Record<string, ServiceData> = {
     description:
       'From the iconic streets of London to the dramatic Scottish Highlands and fairy-tale Welsh castles, discover the United Kingdom with our expertly crafted travel packages. Complete UK Standard Visitor Visa assistance, tailored itineraries, and 24/7 support included.',
     icon: MapPin,
-    gradientFrom: '#1e3a8a',
-    gradientTo: '#be123c',
+    gradientFrom: '#9a1515',
+    gradientTo: '#e8400c',
     heroImage: 'https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=900&h=650&fit=crop',
     stats: [
       { value: '600+', label: 'Travelers Served' },
@@ -1642,8 +1642,8 @@ const allServices: Record<string, ServiceData> = {
     description:
       'The Canadian English Language Proficiency Index Program (CELPIP) is required for Canadian immigration and citizenship applications. Our specialized coaches deliver targeted preparation across Listening, Reading, Writing, and Speaking — so you walk into the test ready to perform.',
     icon: BookOpen,
-    gradientFrom: '#1e3a8a',
-    gradientTo: '#3b82f6',
+    gradientFrom: '#9a1515',
+    gradientTo: '#e8400c',
     heroImage: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=900&h=650&fit=crop',
     stats: [
       { value: '400+', label: 'Students Coached' },
@@ -1838,8 +1838,8 @@ const allServices: Record<string, ServiceData> = {
     description:
       'IELTS is the world\'s most widely accepted English language test — required for UK, Canadian, Australian, and New Zealand immigration, as well as thousands of universities worldwide. Our experienced coaches deliver comprehensive preparation for both Academic and General Training versions.',
     icon: BookOpen,
-    gradientFrom: '#1e3a5f',
-    gradientTo: '#1d4ed8',
+    gradientFrom: '#7f1d1d',
+    gradientTo: '#ea580c',
     heroImage: 'https://images.unsplash.com/photo-1455849318743-b2233052fcff?w=900&h=650&fit=crop',
     stats: [
       { value: '1,200+', label: 'Students Coached' },
@@ -2063,7 +2063,7 @@ export default function ServicePage() {
           <p className="text-muted-foreground mb-6">We could not find that service. Browse all our offerings below.</p>
           <Link
             to="/"
-            className="bg-[#2d4a9e] text-white px-6 py-3 rounded-lg font-semibold inline-flex items-center gap-2 hover:bg-[#2d4a9e]/90 transition-colors"
+            className="bg-[#e8400c] text-white px-6 py-3 rounded-lg font-semibold inline-flex items-center gap-2 hover:bg-[#e8400c]/90 transition-colors"
           >
             Back to Home <ArrowRight className="w-4 h-4" />
           </Link>
@@ -2116,7 +2116,7 @@ export default function ServicePage() {
                 {service.description}
               </p>
               <div className="flex flex-col sm:flex-row flex-wrap gap-3 mb-8">
-                <button className="w-full sm:w-auto bg-white text-[#2d4a9e] px-7 py-3.5 rounded-xl font-bold hover:bg-gray-50 transition-all shadow-xl flex items-center justify-center gap-2 group">
+                <button className="w-full sm:w-auto bg-white text-[#e8400c] px-7 py-3.5 rounded-xl font-bold hover:bg-gray-50 transition-all shadow-xl flex items-center justify-center gap-2 group">
                   {service.cta.button}
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
@@ -2166,7 +2166,7 @@ export default function ServicePage() {
       <section className="py-20 px-4 bg-background">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10 sm:mb-14">
-            <div className="inline-flex items-center gap-2 bg-[#2d4a9e]/10 text-[#2d4a9e] px-4 py-2 rounded-full mb-4">
+            <div className="inline-flex items-center gap-2 bg-[#e8400c]/10 text-[#e8400c] px-4 py-2 rounded-full mb-4">
               <Award className="w-4 h-4" />
               <span className="text-xs font-bold uppercase tracking-widest">What We Offer</span>
             </div>
@@ -2206,7 +2206,7 @@ export default function ServicePage() {
       <section className="py-20 px-4 bg-secondary">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10 sm:mb-14">
-            <div className="inline-flex items-center gap-2 bg-[#2d4a9e]/10 text-[#2d4a9e] px-4 py-2 rounded-full mb-4">
+            <div className="inline-flex items-center gap-2 bg-[#e8400c]/10 text-[#e8400c] px-4 py-2 rounded-full mb-4">
               <Clock className="w-4 h-4" />
               <span className="text-xs font-bold uppercase tracking-widest">Simple Process</span>
             </div>
@@ -2267,7 +2267,7 @@ export default function ServicePage() {
               </div>
               <div className="mt-8 flex flex-wrap gap-4">
                 <button
-                  className="bg-[#2d4a9e] text-white px-7 py-3.5 rounded-xl font-bold hover:bg-[#2d4a9e]/90 transition-all shadow-md flex items-center gap-2 group text-sm"
+                  className="bg-[#e8400c] text-white px-7 py-3.5 rounded-xl font-bold hover:bg-[#e8400c]/90 transition-all shadow-md flex items-center gap-2 group text-sm"
                   style={{ background: `linear-gradient(135deg, ${service.gradientFrom}, ${service.gradientTo})` }}
                 >
                   {service.cta.button}
@@ -2279,7 +2279,7 @@ export default function ServicePage() {
             {/* Testimonial Card */}
             <div className="relative">
               <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-border">
-                <Quote className="w-10 h-10 text-[#2d4a9e]/20 mb-4" />
+                <Quote className="w-10 h-10 text-[#e8400c]/20 mb-4" />
                 <div className="flex gap-1 mb-4">
                   {Array.from({ length: 5 }).map((_, j) => (
                     <Star key={j} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
@@ -2312,7 +2312,7 @@ export default function ServicePage() {
       <section className="py-20 px-4 bg-secondary">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-10 sm:mb-12">
-            <div className="inline-flex items-center gap-2 bg-[#2d4a9e]/10 text-[#2d4a9e] px-4 py-2 rounded-full mb-4">
+            <div className="inline-flex items-center gap-2 bg-[#e8400c]/10 text-[#e8400c] px-4 py-2 rounded-full mb-4">
               <BookOpen className="w-4 h-4" />
               <span className="text-xs font-bold uppercase tracking-widest">Common Questions</span>
             </div>
@@ -2343,7 +2343,7 @@ export default function ServicePage() {
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">{service.cta.title}</h2>
           <p className="text-white/80 mb-8 text-sm sm:text-base max-w-xl mx-auto">{service.cta.subtitle}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
-            <button className="bg-white text-[#2d4a9e] px-8 py-4 rounded-xl font-bold hover:bg-gray-50 transition-all shadow-xl flex items-center justify-center gap-2 group text-sm">
+            <button className="bg-white text-[#e8400c] px-8 py-4 rounded-xl font-bold hover:bg-gray-50 transition-all shadow-xl flex items-center justify-center gap-2 group text-sm">
               {service.cta.button}
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
@@ -2373,7 +2373,7 @@ export default function ServicePage() {
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between mb-8">
             <h3 className="text-xl font-bold text-foreground">Explore Other Services</h3>
-            <Link to="/" className="text-[#2d4a9e] text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">
+            <Link to="/" className="text-[#e8400c] text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">
               View All <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -2387,16 +2387,16 @@ export default function ServicePage() {
                   <Link
                     key={key}
                     to={`/services/${key}`}
-                    className="flex items-center gap-4 bg-white rounded-xl p-5 border border-border hover:border-[#2d4a9e]/30 hover:shadow-md transition-all group"
+                    className="flex items-center gap-4 bg-white rounded-xl p-5 border border-border hover:border-[#e8400c]/30 hover:shadow-md transition-all group"
                   >
-                    <div className="w-10 h-10 bg-[#2d4a9e]/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-[#2d4a9e]/20 transition-colors">
-                      <SIcon className="w-5 h-5 text-[#2d4a9e]" />
+                    <div className="w-10 h-10 bg-[#e8400c]/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-[#e8400c]/20 transition-colors">
+                      <SIcon className="w-5 h-5 text-[#e8400c]" />
                     </div>
                     <div className="min-w-0">
-                      <div className="font-bold text-foreground text-sm group-hover:text-[#2d4a9e] transition-colors">{s.title}</div>
+                      <div className="font-bold text-foreground text-sm group-hover:text-[#e8400c] transition-colors">{s.title}</div>
                       <div className="text-xs text-muted-foreground truncate mt-0.5">{s.tagline}</div>
                     </div>
-                    <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-[#2d4a9e] flex-shrink-0 ml-auto" />
+                    <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-[#e8400c] flex-shrink-0 ml-auto" />
                   </Link>
                 );
               })}

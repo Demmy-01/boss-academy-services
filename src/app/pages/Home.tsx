@@ -24,7 +24,7 @@ const services = [
     title: 'Study in Europe',
     desc: 'Access top European universities with expert guidance and end-to-end support from application to arrival.',
     icon: GraduationCap,
-    color: '#2d4a9e',
+    color: '#e8400c',
     badge: 'Most Popular',
   },
   {
@@ -32,7 +32,7 @@ const services = [
     title: 'Study in UK',
     desc: 'Gain admission to prestigious UK institutions including Oxford, Cambridge, and Imperial College.',
     icon: Globe,
-    color: '#1e40af',
+    color: '#f97316',
     badge: null,
   },
   {
@@ -136,7 +136,7 @@ const services = [
     title: 'IELTS Preparation',
     desc: 'Expert IELTS coaching for Academic and General Training — achieve the band score your goals require.',
     icon: BookOpen,
-    color: '#1d4ed8',
+    color: '#ea580c',
     badge: 'New',
   },
   {
@@ -144,7 +144,7 @@ const services = [
     title: 'CELPIP Tutorial',
     desc: 'Specialist CELPIP coaching for Canadian immigration — reach CLB 7–10 with targeted preparation.',
     icon: BookOpen,
-    color: '#2563eb',
+    color: '#e8400c',
     badge: 'New',
   },
   {
@@ -218,7 +218,7 @@ export default function Home() {
       <section className="relative text-white py-16 sm:py-24 lg:py-36 px-4 overflow-hidden">
         <div
           className="absolute inset-0"
-          style={{ background: 'linear-gradient(135deg, #1e3a8a 0%, #2d4a9e 40%, #3b5bdb 100%)' }}
+          style={{ background: 'linear-gradient(135deg, #9a1515 0%, #c0280a 30%, #e8400c 65%, #f97316 100%)' }}
         />
         <div className="absolute inset-0">
           <div className="absolute top-16 left-8 w-80 h-80 bg-white/8 rounded-full blur-3xl" />
@@ -239,7 +239,7 @@ export default function Home() {
             Boss Academy connects you with world-class education opportunities and unforgettable travel experiences across Europe, Africa, and beyond. Ten specialized services — one trusted partner.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <button className="bg-white text-[#2d4a9e] px-8 py-4 rounded-xl font-bold text-base hover:bg-gray-50 transition-all shadow-2xl hover:shadow-3xl flex items-center justify-center gap-2 group">
+            <button className="bg-white text-[#e8400c] px-8 py-4 rounded-xl font-bold text-base hover:bg-gray-50 transition-all shadow-2xl hover:shadow-3xl flex items-center justify-center gap-2 group">
               Explore Our Services
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
@@ -267,7 +267,7 @@ export default function Home() {
       <section className="py-16 sm:py-24 px-4 bg-background">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10 sm:mb-14">
-            <div className="inline-flex items-center gap-2 bg-[#2d4a9e]/10 text-[#2d4a9e] px-4 py-2 rounded-full mb-4">
+            <div className="inline-flex items-center gap-2 bg-[#e8400c]/10 text-[#e8400c] px-4 py-2 rounded-full mb-4">
               <Award className="w-4 h-4" />
               <span className="text-xs font-bold uppercase tracking-widest">What We Offer</span>
             </div>
@@ -281,12 +281,12 @@ export default function Home() {
               <Link
                 key={service.slug}
                 to={`/services/${service.slug}`}
-                className="group bg-white rounded-2xl p-6 border border-border hover:border-[#2d4a9e]/30 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden"
+                className="group bg-white rounded-2xl p-6 border border-border hover:border-[#e8400c]/30 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden"
               >
                 {service.badge && (
                   <span
                     className="absolute top-4 right-4 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wide"
-                    style={{ backgroundColor: service.badge === 'New' ? service.color : '#2d4a9e' }}
+                    style={{ backgroundColor: service.badge === 'New' ? service.color : '#e8400c' }}
                   >
                     {service.badge}
                   </span>
@@ -297,11 +297,11 @@ export default function Home() {
                 >
                   <service.icon className="w-5 h-5" style={{ color: service.color }} />
                 </div>
-                <h3 className="text-base font-bold text-foreground mb-2 group-hover:text-[#2d4a9e] transition-colors leading-snug">
+                <h3 className="text-base font-bold text-foreground mb-2 group-hover:text-[#e8400c] transition-colors leading-snug">
                   {service.title}
                 </h3>
                 <p className="text-muted-foreground text-sm leading-relaxed mb-4">{service.desc}</p>
-                <span className="inline-flex items-center gap-1.5 text-[#2d4a9e] text-sm font-semibold group-hover:gap-2.5 transition-all">
+                <span className="inline-flex items-center gap-1.5 text-[#e8400c] text-sm font-semibold group-hover:gap-2.5 transition-all">
                   Learn More <ArrowRight className="w-4 h-4" />
                 </span>
               </Link>
@@ -315,7 +315,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 bg-[#2d4a9e]/10 text-[#2d4a9e] px-4 py-2 rounded-full mb-6">
+              <div className="inline-flex items-center gap-2 bg-[#e8400c]/10 text-[#e8400c] px-4 py-2 rounded-full mb-6">
                 <Shield className="w-4 h-4" />
                 <span className="text-xs font-bold uppercase tracking-widest">Why Boss Academy</span>
               </div>
@@ -352,8 +352,8 @@ export default function Home() {
                     key={i}
                     className="flex items-start gap-4 bg-white rounded-xl p-5 shadow-sm border border-border hover:shadow-md transition-shadow"
                   >
-                    <div className="w-10 h-10 bg-[#2d4a9e]/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <item.icon className="w-5 h-5 text-[#2d4a9e]" />
+                    <div className="w-10 h-10 bg-[#e8400c]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <item.icon className="w-5 h-5 text-[#e8400c]" />
                     </div>
                     <div>
                       <h4 className="font-bold text-foreground mb-1 text-sm">{item.title}</h4>
@@ -402,8 +402,8 @@ export default function Home() {
       <section className="py-16 sm:py-24 px-4 bg-background">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10 sm:mb-14">
-            <div className="inline-flex items-center gap-2 bg-[#2d4a9e]/10 text-[#2d4a9e] px-4 py-2 rounded-full mb-4">
-              <Star className="w-4 h-4 fill-[#2d4a9e]" />
+            <div className="inline-flex items-center gap-2 bg-[#e8400c]/10 text-[#e8400c] px-4 py-2 rounded-full mb-4">
+              <Star className="w-4 h-4 fill-[#e8400c]" />
               <span className="text-xs font-bold uppercase tracking-widest">Student Stories</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">What Our Clients Say</h2>
@@ -417,7 +417,7 @@ export default function Home() {
                 key={i}
                 className="bg-white rounded-2xl p-5 sm:p-6 shadow-lg border border-border hover:shadow-xl transition-shadow"
               >
-                <Quote className="w-8 h-8 text-[#2d4a9e]/20 mb-4" />
+                <Quote className="w-8 h-8 text-[#e8400c]/20 mb-4" />
                 <div className="flex gap-1 mb-4">
                   {Array.from({ length: t.rating }).map((_, j) => (
                     <Star key={j} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
@@ -425,7 +425,7 @@ export default function Home() {
                 </div>
                 <p className="text-foreground mb-6 leading-relaxed text-sm">"{t.content}"</p>
                 <div className="flex items-center gap-3 pt-4 border-t border-border flex-wrap">
-                  <div className="w-10 h-10 bg-[#2d4a9e]/10 rounded-full flex items-center justify-center text-[#2d4a9e] font-bold text-sm flex-shrink-0">
+                  <div className="w-10 h-10 bg-[#e8400c]/10 rounded-full flex items-center justify-center text-[#e8400c] font-bold text-sm flex-shrink-0">
                     {t.initials}
                   </div>
                   <div className="min-w-0 flex-1">
@@ -433,7 +433,7 @@ export default function Home() {
                     <div className="text-xs text-muted-foreground truncate">{t.role}</div>
                   </div>
                   <div className="flex-shrink-0">
-                    <span className="text-[10px] bg-[#2d4a9e]/10 text-[#2d4a9e] px-2 py-0.5 rounded-full font-semibold break-words">
+                    <span className="text-[10px] bg-[#e8400c]/10 text-[#e8400c] px-2 py-0.5 rounded-full font-semibold break-words">
                       {t.service}
                     </span>
                   </div>
@@ -448,7 +448,7 @@ export default function Home() {
       <section className="py-16 sm:py-24 px-4 relative overflow-hidden">
         <div
           className="absolute inset-0"
-          style={{ background: 'linear-gradient(135deg, #1e3a8a 0%, #2d4a9e 50%, #3b5bdb 100%)' }}
+          style={{ background: 'linear-gradient(135deg, #9a1515 0%, #c0280a 35%, #e8400c 65%, #f97316 100%)' }}
         />
         <div className="absolute inset-0">
           <div className="absolute top-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
@@ -460,7 +460,7 @@ export default function Home() {
             Join thousands of students and travelers who have transformed their lives with Boss Academy. Book a free consultation today — no obligation, just expert guidance.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <button className="bg-white text-[#2d4a9e] px-8 py-4 rounded-xl font-bold text-base hover:bg-gray-50 transition-all shadow-xl flex items-center justify-center gap-2 group">
+            <button className="bg-white text-[#e8400c] px-8 py-4 rounded-xl font-bold text-base hover:bg-gray-50 transition-all shadow-xl flex items-center justify-center gap-2 group">
               Book Free Consultation
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>

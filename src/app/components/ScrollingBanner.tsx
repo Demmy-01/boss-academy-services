@@ -49,7 +49,7 @@ export function ScrollingBanner() {
       `}</style>
 
       {/* Title strip */}
-      <div className="flex items-center justify-center gap-2 py-2 bg-[#2d4a9e]">
+      <div className="flex items-center justify-center gap-2 py-2 bg-[#e8400c]">
         <CheckCircle className="w-3.5 h-3.5 text-white/80" />
         <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/90">
           Affordable Tuition &amp; Flexible Payment Plans Available
@@ -70,19 +70,19 @@ export function ScrollingBanner() {
                 <span className="font-bold text-[13px] text-foreground leading-snug">
                   {uni.name}
                 </span>
-                <GraduationCap className="w-4 h-4 text-[#2d4a9e] flex-shrink-0 mt-0.5" />
+                <GraduationCap className="w-4 h-4 text-[#e8400c] flex-shrink-0 mt-0.5" />
               </div>
 
               {/* Fee */}
               <div className="flex items-baseline gap-1">
-                <span className="text-[13px] font-bold text-[#2d4a9e]">{uni.fee}</span>
+                <span className="text-[13px] font-bold text-[#e8400c]">{uni.fee}</span>
                 <span className="text-[11px] text-muted-foreground">Tuition</span>
               </div>
 
               {/* Country badge */}
               <div className="flex items-center gap-1.5">
                 <span className="text-sm leading-none">{uni.flag}</span>
-                <span className="text-[10px] font-semibold text-[#2d4a9e] bg-[#2d4a9e]/8 px-2 py-0.5 rounded-full">
+                <span className="text-[10px] font-semibold text-[#e8400c] bg-[#e8400c]/8 px-2 py-0.5 rounded-full">
                   {uni.country}
                 </span>
               </div>
