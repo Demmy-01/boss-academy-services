@@ -229,12 +229,47 @@ export default function Root() {
                 </button>
 
                 {isMobileServicesOpen && (
-                  <div className="ml-3 mt-1 space-y-0.5 pb-1">
-                    {servicesList.map((service) => (
+                  <div className="ml-3 mt-1 pb-1">
+                    {/* Education & Visa */}
+                    <div className="px-4 pt-2 pb-1">
+                      <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Education & Visa</span>
+                    </div>
+                    {servicesList.slice(0, 6).map((service) => (
                       <Link
                         key={service.slug}
                         to={`/services/${service.slug}`}
-                        className="flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-secondary transition-colors"
+                        className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-secondary transition-colors active:bg-secondary/80"
+                        onClick={() => setIsMobileOpen(false)}
+                      >
+                        <service.icon className="w-4 h-4 text-[#2d4a9e] flex-shrink-0" />
+                        <span className="text-sm text-foreground font-medium">{service.label}</span>
+                      </Link>
+                    ))}
+                    {/* Travel */}
+                    <div className="px-4 pt-3 pb-1">
+                      <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Travel & Trips</span>
+                    </div>
+                    {servicesList.slice(6, 14).map((service) => (
+                      <Link
+                        key={service.slug}
+                        to={`/services/${service.slug}`}
+                        className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-secondary transition-colors active:bg-secondary/80"
+                        onClick={() => setIsMobileOpen(false)}
+                      >
+                        <service.icon className="w-4 h-4 text-[#2d4a9e] flex-shrink-0" />
+                        <span className="text-sm text-foreground font-medium">{service.label}</span>
+                      </Link>
+                    ))}
+                    {/* Language & Test Prep */}
+                    <div className="px-4 pt-3 pb-1">
+                      <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Language & Exam Prep</span>
+                    </div>
+                    {servicesList.slice(14).map((service) => (
+                      <Link
+                        key={service.slug}
+                        to={`/services/${service.slug}`}
+                        className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-secondary transition-colors active:bg-secondary/80"
+                        onClick={() => setIsMobileOpen(false)}
                       >
                         <service.icon className="w-4 h-4 text-[#2d4a9e] flex-shrink-0" />
                         <span className="text-sm text-foreground font-medium">{service.label}</span>

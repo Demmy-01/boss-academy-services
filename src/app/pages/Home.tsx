@@ -215,7 +215,7 @@ export default function Home() {
   return (
     <div className="w-full bg-background">
       {/* Hero */}
-      <section className="relative text-white py-24 lg:py-36 px-4 overflow-hidden">
+      <section className="relative text-white py-16 sm:py-24 lg:py-36 px-4 overflow-hidden">
         <div
           className="absolute inset-0"
           style={{ background: 'linear-gradient(135deg, #1e3a8a 0%, #2d4a9e 40%, #3b5bdb 100%)' }}
@@ -230,12 +230,12 @@ export default function Home() {
             <Star className="w-4 h-4 fill-yellow-300 text-yellow-300" />
             <span className="text-sm font-medium">Trusted by 5,000+ students worldwide</span>
           </div>
-          <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-[1.1] max-w-5xl mx-auto">
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-[1.1] max-w-5xl mx-auto">
             Your Gateway to{' '}
             <span className="text-yellow-300">Global Education</span> &{' '}
             <span className="text-yellow-300">Adventure</span>
           </h1>
-          <p className="text-lg lg:text-xl text-white/80 max-w-3xl mx-auto mb-10 leading-relaxed">
+          <p className="text-base sm:text-lg lg:text-xl text-white/80 max-w-3xl mx-auto mb-8 sm:mb-10 leading-relaxed">
             Boss Academy connects you with world-class education opportunities and unforgettable travel experiences across Europe, Africa, and beyond. Ten specialized services — one trusted partner.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
@@ -247,7 +247,7 @@ export default function Home() {
               Book Free Consultation
             </button>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-2xl mx-auto">
             {[
               { value: '5,000+', label: 'Happy Clients' },
               { value: '10+', label: 'Years Experience' },
@@ -264,19 +264,19 @@ export default function Home() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-24 px-4 bg-background">
+      <section className="py-16 sm:py-24 px-4 bg-background">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-14">
+          <div className="text-center mb-10 sm:mb-14">
             <div className="inline-flex items-center gap-2 bg-[#2d4a9e]/10 text-[#2d4a9e] px-4 py-2 rounded-full mb-4">
               <Award className="w-4 h-4" />
               <span className="text-xs font-bold uppercase tracking-widest">What We Offer</span>
             </div>
-            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">Our 20 Services</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">Our 20 Services</h2>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
               From education consulting to curated travel experiences and language coaching — each service is backed by a decade of expertise.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
             {services.map((service) => (
               <Link
                 key={service.slug}
@@ -311,9 +311,9 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-24 px-4 bg-secondary" id="about">
+      <section className="py-16 sm:py-24 px-4 bg-secondary" id="about">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div>
               <div className="inline-flex items-center gap-2 bg-[#2d4a9e]/10 text-[#2d4a9e] px-4 py-2 rounded-full mb-6">
                 <Shield className="w-4 h-4" />
@@ -363,7 +363,8 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            {/* Image grid — hidden on mobile, shown on md+ */}
+            <div className="hidden md:grid grid-cols-2 gap-4">
               <img
                 src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=500&h=400&fit=crop"
                 alt="Students graduating"
@@ -385,28 +386,36 @@ export default function Home() {
                 className="rounded-2xl shadow-xl w-full h-56 object-cover"
               />
             </div>
+            {/* Mobile: single featured image */}
+            <div className="md:hidden rounded-2xl overflow-hidden shadow-xl">
+              <img
+                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=400&fit=crop"
+                alt="Students graduating"
+                className="w-full h-56 sm:h-64 object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section className="py-24 px-4 bg-background">
+      <section className="py-16 sm:py-24 px-4 bg-background">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-14">
+          <div className="text-center mb-10 sm:mb-14">
             <div className="inline-flex items-center gap-2 bg-[#2d4a9e]/10 text-[#2d4a9e] px-4 py-2 rounded-full mb-4">
               <Star className="w-4 h-4 fill-[#2d4a9e]" />
               <span className="text-xs font-bold uppercase tracking-widest">Student Stories</span>
             </div>
-            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">What Our Clients Say</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">What Our Clients Say</h2>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
               Real stories from students and travelers who achieved their dreams with Boss Academy.
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-7">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-7">
             {testimonials.map((t, i) => (
               <div
                 key={i}
-                className="bg-white rounded-2xl p-8 shadow-lg border border-border hover:shadow-xl transition-shadow"
+                className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border border-border hover:shadow-xl transition-shadow"
               >
                 <Quote className="w-8 h-8 text-[#2d4a9e]/20 mb-4" />
                 <div className="flex gap-1 mb-4">
@@ -436,7 +445,7 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 px-4 relative overflow-hidden">
+      <section className="py-16 sm:py-24 px-4 relative overflow-hidden">
         <div
           className="absolute inset-0"
           style={{ background: 'linear-gradient(135deg, #1e3a8a 0%, #2d4a9e 50%, #3b5bdb 100%)' }}
@@ -446,8 +455,8 @@ export default function Home() {
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
         </div>
         <div className="max-w-4xl mx-auto text-center relative z-10 text-white">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">Ready to Start Your Journey?</h2>
-          <p className="text-lg text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 sm:mb-6">Ready to Start Your Journey?</h2>
+          <p className="text-base sm:text-lg text-white/80 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed">
             Join thousands of students and travelers who have transformed their lives with Boss Academy. Book a free consultation today — no obligation, just expert guidance.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
@@ -459,7 +468,7 @@ export default function Home() {
               Browse All Services
             </button>
           </div>
-          <div className="grid sm:grid-cols-3 gap-8 pt-8 border-t border-white/20">
+          <div className="grid grid-cols-3 sm:grid-cols-3 gap-6 sm:gap-8 pt-8 border-t border-white/20">
             {[
               { value: '10+', label: 'Years Experience' },
               { value: '5,000+', label: 'Happy Clients' },

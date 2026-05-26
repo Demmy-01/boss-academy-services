@@ -2078,7 +2078,7 @@ export default function ServicePage() {
     <div className="w-full bg-background">
       {/* Hero */}
       <section
-        className="relative text-white py-20 lg:py-28 px-4 overflow-hidden"
+        className="relative text-white py-14 sm:py-20 lg:py-28 px-4 overflow-hidden"
         style={{ background: `linear-gradient(135deg, ${service.gradientFrom} 0%, ${service.gradientTo} 100%)` }}
       >
         <div className="absolute inset-0">
@@ -2095,26 +2095,34 @@ export default function ServicePage() {
             <span className="text-white font-medium">{service.title}</span>
           </nav>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Mobile: image first */}
+            <div className="block lg:hidden rounded-2xl overflow-hidden shadow-2xl">
+              <img
+                src={service.heroImage}
+                alt={service.title}
+                className="w-full h-52 sm:h-64 object-cover"
+              />
+            </div>
             <div>
               <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-white/20">
                 <Icon className="w-4 h-4" />
                 <span className="text-sm font-semibold">{service.title}</span>
               </div>
-              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-[1.1]">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-5 leading-[1.1]">
                 {service.tagline}
               </h1>
-              <p className="text-base lg:text-lg text-white/80 mb-8 leading-relaxed">
+              <p className="text-sm sm:text-base lg:text-lg text-white/80 mb-7 leading-relaxed">
                 {service.description}
               </p>
-              <div className="flex flex-wrap gap-4 mb-10">
-                <button className="bg-white text-[#2d4a9e] px-7 py-3.5 rounded-xl font-bold hover:bg-gray-50 transition-all shadow-xl flex items-center gap-2 group">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3 mb-8">
+                <button className="w-full sm:w-auto bg-white text-[#2d4a9e] px-7 py-3.5 rounded-xl font-bold hover:bg-gray-50 transition-all shadow-xl flex items-center justify-center gap-2 group">
                   {service.cta.button}
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
                 <a
                   href="#contact"
-                  className="border-2 border-white/40 text-white px-7 py-3.5 rounded-xl font-semibold hover:bg-white/10 transition-all flex items-center gap-2"
+                  className="w-full sm:w-auto border-2 border-white/40 text-white px-7 py-3.5 rounded-xl font-semibold hover:bg-white/10 transition-all flex items-center justify-center gap-2"
                 >
                   <Phone className="w-4 h-4" />
                   Contact Us
@@ -2129,6 +2137,7 @@ export default function ServicePage() {
                 ))}
               </div>
             </div>
+            {/* Desktop: image on the right */}
             <div className="hidden lg:block">
               <div className="relative">
                 <img
@@ -2138,8 +2147,8 @@ export default function ServicePage() {
                 />
                 <div className="absolute -bottom-4 -left-4 bg-white rounded-xl p-4 shadow-xl">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-[#2d4a9e]/10 rounded-lg flex items-center justify-center">
-                      <Icon className="w-5 h-5 text-[#2d4a9e]" />
+                    <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `${service.gradientFrom}18` }}>
+                      <Icon className="w-5 h-5" style={{ color: service.gradientFrom }} />
                     </div>
                     <div>
                       <div className="text-xs text-muted-foreground font-medium">Boss Academy</div>
@@ -2156,17 +2165,17 @@ export default function ServicePage() {
       {/* Features */}
       <section className="py-20 px-4 bg-background">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-14">
+          <div className="text-center mb-10 sm:mb-14">
             <div className="inline-flex items-center gap-2 bg-[#2d4a9e]/10 text-[#2d4a9e] px-4 py-2 rounded-full mb-4">
               <Award className="w-4 h-4" />
               <span className="text-xs font-bold uppercase tracking-widest">What We Offer</span>
             </div>
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">Our {service.title} Services Include</h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4">Our {service.title} Services Include</h2>
+            <p className="text-muted-foreground max-w-xl mx-auto text-sm sm:text-base">
               Everything you need, handled by our expert team from start to finish.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {service.features.map((feature, i) => (
               <div
                 key={i}
@@ -2196,17 +2205,17 @@ export default function ServicePage() {
       {/* How It Works */}
       <section className="py-20 px-4 bg-secondary">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-14">
+          <div className="text-center mb-10 sm:mb-14">
             <div className="inline-flex items-center gap-2 bg-[#2d4a9e]/10 text-[#2d4a9e] px-4 py-2 rounded-full mb-4">
               <Clock className="w-4 h-4" />
               <span className="text-xs font-bold uppercase tracking-widest">Simple Process</span>
             </div>
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">How It Works</h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4">How It Works</h2>
+            <p className="text-muted-foreground max-w-xl mx-auto text-sm sm:text-base">
               A clear, guided process designed to make your experience smooth and stress-free.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {service.process.map((step, i) => (
               <div key={i} className="relative">
                 {i < service.process.length - 1 && (
@@ -2231,16 +2240,16 @@ export default function ServicePage() {
       {/* Why Choose Boss Academy for this Service */}
       <section className="py-20 px-4 bg-background">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style={{ background: `${service.gradientFrom}18`, color: service.gradientFrom }}>
                 <CheckCircle2 className="w-4 h-4" />
                 <span className="text-xs font-bold uppercase tracking-widest">Why Choose Us</span>
               </div>
-              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-5 leading-tight">
                 Why Boss Academy for {service.title}?
               </h2>
-              <p className="text-muted-foreground mb-8 leading-relaxed">
+              <p className="text-muted-foreground mb-7 leading-relaxed text-sm sm:text-base">
                 We have built our reputation on delivering results. Our specialized team combines deep expertise with personalized attention to ensure your success every step of the way.
               </p>
               <div className="space-y-2.5">
@@ -2269,7 +2278,7 @@ export default function ServicePage() {
 
             {/* Testimonial Card */}
             <div className="relative">
-              <div className="bg-white rounded-2xl p-8 shadow-xl border border-border">
+              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-border">
                 <Quote className="w-10 h-10 text-[#2d4a9e]/20 mb-4" />
                 <div className="flex gap-1 mb-4">
                   {Array.from({ length: 5 }).map((_, j) => (
@@ -2302,13 +2311,13 @@ export default function ServicePage() {
       {/* FAQ */}
       <section className="py-20 px-4 bg-secondary">
         <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-10 sm:mb-12">
             <div className="inline-flex items-center gap-2 bg-[#2d4a9e]/10 text-[#2d4a9e] px-4 py-2 rounded-full mb-4">
               <BookOpen className="w-4 h-4" />
               <span className="text-xs font-bold uppercase tracking-widest">Common Questions</span>
             </div>
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">Frequently Asked Questions</h2>
-            <p className="text-muted-foreground">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4">Frequently Asked Questions</h2>
+            <p className="text-muted-foreground text-sm sm:text-base">
               Everything you need to know about our {service.title} service.
             </p>
           </div>
@@ -2331,8 +2340,8 @@ export default function ServicePage() {
           <div className="absolute bottom-0 right-0 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
         </div>
         <div className="max-w-4xl mx-auto text-center relative z-10 text-white">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4">{service.cta.title}</h2>
-          <p className="text-white/80 mb-8 text-base max-w-xl mx-auto">{service.cta.subtitle}</p>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">{service.cta.title}</h2>
+          <p className="text-white/80 mb-8 text-sm sm:text-base max-w-xl mx-auto">{service.cta.subtitle}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
             <button className="bg-white text-[#2d4a9e] px-8 py-4 rounded-xl font-bold hover:bg-gray-50 transition-all shadow-xl flex items-center justify-center gap-2 group text-sm">
               {service.cta.button}
@@ -2368,7 +2377,7 @@ export default function ServicePage() {
               View All <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {Object.entries(allServices)
               .filter(([key]) => key !== slug)
               .slice(0, 3)
