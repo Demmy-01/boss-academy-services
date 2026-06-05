@@ -1,4 +1,5 @@
-﻿import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import StudyEuropeApplicationModal from '../components/StudyEuropeApplicationModal';
 import { useParams, Link } from 'react-router';
 import {
   GraduationCap,
@@ -106,7 +107,7 @@ const allServices: Record<string, ServiceData> = {
       {
         step: '01',
         title: 'Submit Required Documents',
-        desc: 'Start by uploading your required documents â€” academic transcripts, passport, language certificates, and any other supporting materials. This helps us assess your profile immediately.',
+        desc: 'Start by uploading your required documents academic transcripts, passport, language certificates, and any other supporting materials. This helps us assess your profile immediately.',
       },
       {
         step: '02',
@@ -2164,6 +2165,10 @@ export default function ServicePage({ slug: propSlug }: { slug?: string }) {
   // accordion state for features
   const [openFeature, setOpenFeature] = useState<number | null>(null);
 
+  // Study in Europe application modal
+  const [showApplicationModal, setShowApplicationModal] = useState(false);
+  const isStudyEurope = slug === 'study-europe';
+
   if (!service) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center" style={{ background: '#FAF8F4' }}>
@@ -2395,15 +2400,25 @@ export default function ServicePage({ slug: propSlug }: { slug?: string }) {
 
           {/* CTA row */}
           <div className="hero-animate-delay2 flex flex-wrap gap-3 mb-20">
-            <a
-              href={WHATSAPP}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="cta-primary inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold"
-              style={{ borderRadius: '4px' }}
-            >
-              {service.cta.button} <ArrowRight className="w-4 h-4" />
-            </a>
+            {isStudyEurope ? (
+              <button
+                onClick={() => setShowApplicationModal(true)}
+                className="cta-primary inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold"
+                style={{ borderRadius: '4px' }}
+              >
+                {service.cta.button} <ArrowRight className="w-4 h-4" />
+              </button>
+            ) : (
+              <a
+                href={WHATSAPP}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cta-primary inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold"
+                style={{ borderRadius: '4px' }}
+              >
+                {service.cta.button} <ArrowRight className="w-4 h-4" />
+              </a>
+            )}
             <a
               href="#how-it-works"
               className="cta-ghost inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold"
@@ -2623,15 +2638,25 @@ export default function ServicePage({ slug: propSlug }: { slug?: string }) {
               </div>
 
               <div className="mt-10">
-                <a
-                  href={WHATSAPP}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="cta-red inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold"
-                  style={{ borderRadius: '4px' }}
-                >
-                  {service.cta.button} <ArrowRight className="w-4 h-4" />
-                </a>
+                {isStudyEurope ? (
+                  <button
+                    onClick={() => setShowApplicationModal(true)}
+                    className="cta-red inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold"
+                    style={{ borderRadius: '4px' }}
+                  >
+                    {service.cta.button} <ArrowRight className="w-4 h-4" />
+                  </button>
+                ) : (
+                  <a
+                    href={WHATSAPP}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cta-red inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold"
+                    style={{ borderRadius: '4px' }}
+                  >
+                    {service.cta.button} <ArrowRight className="w-4 h-4" />
+                  </a>
+                )}
               </div>
             </div>
 
@@ -2723,15 +2748,25 @@ export default function ServicePage({ slug: propSlug }: { slug?: string }) {
 
             {/* Right: buttons */}
             <div className="flex flex-col sm:flex-row gap-3 lg:flex-shrink-0">
-              <a
-                href={WHATSAPP}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="cta-primary inline-flex items-center gap-2 px-7 py-4 text-sm font-semibold"
-                style={{ borderRadius: '4px' }}
-              >
-                {service.cta.button} <ArrowRight className="w-4 h-4" />
-              </a>
+              {isStudyEurope ? (
+                <button
+                  onClick={() => setShowApplicationModal(true)}
+                  className="cta-primary inline-flex items-center gap-2 px-7 py-4 text-sm font-semibold"
+                  style={{ borderRadius: '4px' }}
+                >
+                  {service.cta.button} <ArrowRight className="w-4 h-4" />
+                </button>
+              ) : (
+                <a
+                  href={WHATSAPP}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cta-primary inline-flex items-center gap-2 px-7 py-4 text-sm font-semibold"
+                  style={{ borderRadius: '4px' }}
+                >
+                  {service.cta.button} <ArrowRight className="w-4 h-4" />
+                </a>
+              )}
               <a
                 href="mailto:info@bossacademy.com"
                 className="cta-ghost inline-flex items-center gap-2 px-7 py-4 text-sm font-semibold"
@@ -2800,6 +2835,14 @@ export default function ServicePage({ slug: propSlug }: { slug?: string }) {
           </div>
         </div>
       </section>
+
+      {/* Study in Europe Application Modal */}
+      {isStudyEurope && (
+        <StudyEuropeApplicationModal
+          open={showApplicationModal}
+          onOpenChange={setShowApplicationModal}
+        />
+      )}
 
     </div>
   );
