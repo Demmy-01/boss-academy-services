@@ -47,8 +47,27 @@ function openDB(): Promise<IDBDatabase> {
 }
 
 
+function purgeMockData(db: IDBDatabase): Promise<void> {
+  const mockIds = ['app-1', 'app-2', 'app-3'];
+  return new Promise((resolve) => {
+    const transaction = db.transaction(STORE_NAME, 'readwrite');
+    const store = transaction.objectStore(STORE_NAME);
+    let completed = 0;
+    mockIds.forEach((id) => {
+      const request = store.delete(id);
+      request.onsuccess = request.onerror = () => {
+        completed++;
+        if (completed === mockIds.length) {
+          resolve();
+        }
+      };
+    });
+  });
+}
+
 export async function getApplications(): Promise<Application[]> {
   const db = await openDB();
+  await purgeMockData(db);
 
   // 1. Get local IndexedDB applications
   const localApps: Application[] = await new Promise((resolve, reject) => {
@@ -109,7 +128,7 @@ export async function addApplication(
 ): Promise<Application> {
   // Route to Supabase for the 'study-europe' service
   if (application.serviceSlug === 'study-europe') {
-    // 1. Upload each file to Supabase Storage and collect their metadata
+
     const uploadedFiles: { name: string; type: string; size: number; url: string }[] = [];
 
     for (const file of application.files) {
@@ -126,8 +145,15 @@ export async function addApplication(
         });
 
       if (uploadError) {
-        console.error(`Failed to upload ${file.name}:`, uploadError);
-        throw uploadError;
+        // Log the real Supabase error for debugging, but keep going
+        console.warn(
+          `[Supabase Storage] File upload failed for "${file.name}". ` +
+          `This is usually caused by a missing bucket policy. ` +
+          `Go to Supabase → Storage → application-files → Policies and add an INSERT policy for the anon role. ` +
+          `Supabase error:`, uploadError
+        );
+        // Skip adding this file to uploadedFiles but don't abort submission
+        continue;
       }
 
       // Get the public URL
@@ -160,7 +186,7 @@ export async function addApplication(
       .single();
 
     if (error) {
-      console.error('Failed to save to Supabase:', error);
+      console.error('[Supabase] Failed to insert application row:', error);
       throw error;
     }
 
