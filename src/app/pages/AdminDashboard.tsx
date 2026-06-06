@@ -128,21 +128,30 @@ export default function AdminDashboard() {
     toast.info('Logged out from dashboard.');
   };
 
-  // Download uploaded file
+  // Open or download uploaded file
   const handleDownloadFile = (file: ApplicationFile) => {
     try {
-      const url = URL.createObjectURL(file.data);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = file.name;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-      toast.success(`Downloading ${file.name}`);
+      if (file.url) {
+        // Supabase-stored file: open the public URL in a new tab
+        window.open(file.url, '_blank', 'noopener,noreferrer');
+        toast.success(`Opening ${file.name}`);
+      } else if (file.data) {
+        // IndexedDB local Blob: trigger download
+        const url = URL.createObjectURL(file.data);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = file.name;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        toast.success(`Downloading ${file.name}`);
+      } else {
+        toast.error('File data unavailable.');
+      }
     } catch (err) {
       console.error(err);
-      toast.error('Failed to download file.');
+      toast.error('Failed to access file.');
     }
   };
 
@@ -870,7 +879,7 @@ export default function AdminDashboard() {
                           {selectedApp.files.length === 0 ? (
                             <div className="text-gray-500 text-xs italic">No documents uploaded.</div>
                           ) : (
-                            <div className="space-y-2">
+                          <div className="space-y-2">
                               {selectedApp.files.map((file, i) => (
                                 <div
                                   key={i}
@@ -883,7 +892,12 @@ export default function AdminDashboard() {
                                         {file.name}
                                       </p>
                                       <p className="text-gray-500 text-[10px]">
-                                        {(file.size / 1024).toFixed(1)} KB
+                                        {file.size >= 1024 * 1024
+                                          ? `${(file.size / (1024 * 1024)).toFixed(1)} MB`
+                                          : `${(file.size / 1024).toFixed(1)} KB`}
+                                        {file.url && (
+                                          <span className="ml-1.5 text-blue-400 font-semibold">• Supabase</span>
+                                        )}
                                       </p>
                                     </div>
                                   </div>
@@ -891,9 +905,9 @@ export default function AdminDashboard() {
                                   <button
                                     onClick={() => handleDownloadFile(file)}
                                     className="p-1.5 rounded-md bg-gray-800 text-gray-400 hover:text-white hover:bg-[#e8400c] transition-all cursor-pointer"
-                                    title="Download File"
+                                    title={file.url ? 'Open File' : 'Download File'}
                                   >
-                                    <Download className="w-3.5 h-3.5" />
+                                    {file.url ? <Eye className="w-3.5 h-3.5" /> : <Download className="w-3.5 h-3.5" />}
                                   </button>
                                 </div>
                               ))}
@@ -1013,20 +1027,6 @@ export default function AdminDashboard() {
                         className="flex items-center gap-2 bg-red-500/10 hover:bg-red-500/25 border border-red-500/35 hover:border-red-500/50 text-red-400 font-bold text-xs px-5 py-3 rounded-lg transition-all cursor-pointer"
                       >
                         <Trash2 className="w-4 h-4" /> Clear All Applications
-                      </button>
-
-                      <button
-                        onClick={async () => {
-                          if (confirm('This will seed the database with mock records. Do you wish to proceed?')) {
-                            // Clear and reload
-                            await clearAllApplications();
-                            await loadApplications();
-                            toast.success('Database reset and seeded with mock applications.');
-                          }
-                        }}
-                        className="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 text-gray-200 font-bold text-xs px-5 py-3 rounded-lg transition-all cursor-pointer"
-                      >
-                        <RefreshCw className="w-4 h-4" /> Seed Mock Applications
                       </button>
                     </div>
                   </div>

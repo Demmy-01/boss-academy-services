@@ -281,7 +281,13 @@ export default function ServiceApplicationModal({
   }, [isComplete]);
 
   /* ── File handling ─────────────────────────────────────────────── */
+  const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+
   const handleFileSelect = useCallback((docId: string, file: File) => {
+    if (file.size > MAX_FILE_SIZE) {
+      alert(`"${file.name}" is too large. Maximum file size is 5MB. Please compress or choose a smaller file.`);
+      return;
+    }
     setDocuments(prev => prev.map(d => (d.id === docId ? { ...d, file } : d)));
   }, []);
 
@@ -692,7 +698,7 @@ export default function ServiceApplicationModal({
             {currentStep === 'documents' && (
               <div className="space-y-3">
                 <p className="text-sm mb-4" style={{ color: '#6B6760', fontWeight: 300, lineHeight: 1.6 }}>
-                  Upload the following documents. Accepted formats: PDF, JPG, PNG, DOC (max 10MB each).
+                  Upload the following documents. Accepted formats: PDF, JPG, PNG, DOC (max <strong>5MB</strong> each).
                 </p>
                 {documents.map(doc => (
                   <div key={doc.id}>
