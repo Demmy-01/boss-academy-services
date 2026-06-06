@@ -273,15 +273,12 @@ export default function ServiceApplicationModal({
       };
       frame();
 
-      // Auto-redirect to WhatsApp after 4.5s
-      // We skip auto-redirect for 'study-europe' to make the dedicated modal popup more interactive and prevent browser popup blocking
-      if (serviceSlug !== 'study-europe') {
-        redirectTimerRef.current = setTimeout(() => {
-          handleWhatsApp();
-        }, 4500);
-      }
+      // Auto-redirect to WhatsApp after 4s
+      redirectTimerRef.current = setTimeout(() => {
+        handleWhatsApp();
+      }, 4000);
     }
-  }, [isComplete, serviceSlug]);
+  }, [isComplete]);
 
   /* ── File handling ─────────────────────────────────────────────── */
   const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
@@ -1117,6 +1114,10 @@ export default function ServiceApplicationModal({
                         </svg>
                         Continue to WhatsApp Chat
                       </button>
+                      
+                      <span className="text-[10px] text-gray-400 mt-2">
+                        Redirecting to WhatsApp automatically in a moment...
+                      </span>
 
                       <button
                         onClick={() => onOpenChange(false)}
