@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import StudyEuropeApplicationModal from '../components/StudyEuropeApplicationModal';
+import ServiceApplicationModal from '../components/ServiceApplicationModal';
 import { useParams, Link } from 'react-router';
 import {
   GraduationCap,
@@ -2400,25 +2400,13 @@ export default function ServicePage({ slug: propSlug }: { slug?: string }) {
 
           {/* CTA row */}
           <div className="hero-animate-delay2 flex flex-wrap gap-3 mb-20">
-            {isStudyEurope ? (
-              <button
-                onClick={() => setShowApplicationModal(true)}
-                className="cta-primary inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold"
-                style={{ borderRadius: '4px' }}
-              >
-                {service.cta.button} <ArrowRight className="w-4 h-4" />
-              </button>
-            ) : (
-              <a
-                href={WHATSAPP}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="cta-primary inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold"
-                style={{ borderRadius: '4px' }}
-              >
-                {service.cta.button} <ArrowRight className="w-4 h-4" />
-              </a>
-            )}
+            <button
+              onClick={() => setShowApplicationModal(true)}
+              className="cta-primary inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold"
+              style={{ borderRadius: '4px' }}
+            >
+              {service.cta.button} <ArrowRight className="w-4 h-4" />
+            </button>
             <a
               href="#how-it-works"
               className="cta-ghost inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold"
@@ -2638,25 +2626,13 @@ export default function ServicePage({ slug: propSlug }: { slug?: string }) {
               </div>
 
               <div className="mt-10">
-                {isStudyEurope ? (
-                  <button
-                    onClick={() => setShowApplicationModal(true)}
-                    className="cta-red inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold"
-                    style={{ borderRadius: '4px' }}
-                  >
-                    {service.cta.button} <ArrowRight className="w-4 h-4" />
-                  </button>
-                ) : (
-                  <a
-                    href={WHATSAPP}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="cta-red inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold"
-                    style={{ borderRadius: '4px' }}
-                  >
-                    {service.cta.button} <ArrowRight className="w-4 h-4" />
-                  </a>
-                )}
+                <button
+                  onClick={() => setShowApplicationModal(true)}
+                  className="cta-red inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold"
+                  style={{ borderRadius: '4px' }}
+                >
+                  {service.cta.button} <ArrowRight className="w-4 h-4" />
+                </button>
               </div>
             </div>
 
@@ -2748,25 +2724,13 @@ export default function ServicePage({ slug: propSlug }: { slug?: string }) {
 
             {/* Right: buttons */}
             <div className="flex flex-col sm:flex-row gap-3 lg:flex-shrink-0">
-              {isStudyEurope ? (
-                <button
-                  onClick={() => setShowApplicationModal(true)}
-                  className="cta-primary inline-flex items-center gap-2 px-7 py-4 text-sm font-semibold"
-                  style={{ borderRadius: '4px' }}
-                >
-                  {service.cta.button} <ArrowRight className="w-4 h-4" />
-                </button>
-              ) : (
-                <a
-                  href={WHATSAPP}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="cta-primary inline-flex items-center gap-2 px-7 py-4 text-sm font-semibold"
-                  style={{ borderRadius: '4px' }}
-                >
-                  {service.cta.button} <ArrowRight className="w-4 h-4" />
-                </a>
-              )}
+              <button
+                onClick={() => setShowApplicationModal(true)}
+                className="cta-primary inline-flex items-center gap-2 px-7 py-4 text-sm font-semibold"
+                style={{ borderRadius: '4px' }}
+              >
+                {service.cta.button} <ArrowRight className="w-4 h-4" />
+              </button>
               <a
                 href="mailto:info@bossacademy.com"
                 className="cta-ghost inline-flex items-center gap-2 px-7 py-4 text-sm font-semibold"
@@ -2836,13 +2800,12 @@ export default function ServicePage({ slug: propSlug }: { slug?: string }) {
         </div>
       </section>
 
-      {/* Study in Europe Application Modal */}
-      {isStudyEurope && (
-        <StudyEuropeApplicationModal
-          open={showApplicationModal}
-          onOpenChange={setShowApplicationModal}
-        />
-      )}
+      {/* Service Application Modal */}
+      <ServiceApplicationModal
+        open={showApplicationModal}
+        onOpenChange={setShowApplicationModal}
+        serviceSlug={slug || ''}
+      />
 
     </div>
   );

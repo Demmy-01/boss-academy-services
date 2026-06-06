@@ -2,6 +2,7 @@ import { createBrowserRouter, Navigate } from 'react-router';
 import { Link } from 'react-router';
 import Root from './Root';
 import ServicePage from './pages/ServicePage';
+import AdminDashboard from './pages/AdminDashboard';
 
 function NotFound() {
   return (
@@ -60,5 +61,9 @@ export const router = createBrowserRouter([
       { path: 'services/:slug', element: <ServicePage /> },
       { path: '*', Component: NotFound },
     ],
+  },
+  {
+    path: '/admin',
+    element: <AdminDashboard />,
   },
 ]);
