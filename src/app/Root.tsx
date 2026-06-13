@@ -1,4 +1,4 @@
-﻿import { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Outlet, Link, useLocation } from 'react-router';
 import { ScrollingBanner } from './components/ScrollingBanner';
 import logoImg from '../images/logo.png';
@@ -56,6 +56,8 @@ function ScrollToTop() {
 const WHATSAPP_URL = 'https://wa.me/2347059461257';
 
 export default function Root() {
+  const location = useLocation();
+  const isProofOfFunds = location.pathname.includes('proof-of-funds');
   return (
     <div className="min-h-screen flex flex-col">
       <ScrollToTop />
@@ -107,7 +109,8 @@ export default function Root() {
 
 
       </header>
-      <ScrollingBanner />
+      {/* Hide the tuition carousel on the Proof of Funds page — it's irrelevant there */}
+      {!isProofOfFunds && <ScrollingBanner />}
 
       {/* Main Content */}
       <main className="flex-1">

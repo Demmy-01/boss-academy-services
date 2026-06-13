@@ -363,9 +363,9 @@ const allServices: Record<string, ServiceData> = {
 
   'proof-of-funds': {
     title: 'Proof of Funds',
-    tagline: 'Embassy-Compliant Financial Documentation, Fast',
+    tagline: 'Master Your Financials — Join Our Expert-Led Webinar',
     description:
-      'Meeting visa financial requirements is crucial to a successful application. Our specialized team helps you prepare, organize, and present your proof of funds in the exact format required by embassies and universities worldwide.',
+      'Join our exclusive webinar to learn the dos and don\'ts of submitting your bank statements and other proven ways to demonstrate your financials to embassies and universities. Stop guessing — get the insider knowledge that makes the difference between approval and rejection.',
     icon: DollarSign,
     gradientFrom: '#164e63',
     gradientTo: '#0284c7',
@@ -453,9 +453,9 @@ const allServices: Record<string, ServiceData> = {
       initials: 'EO',
     },
     cta: {
-      title: 'Get Your Proof of Funds Ready',
-      subtitle: 'Fast, accurate, embassy-compliant documentation',
-      button: 'Get Started Now',
+      title: 'Reserve Your Webinar Spot',
+      subtitle: 'Join hundreds of applicants who got it right the first time',
+      button: 'Register for Webinar',
     },
   },
 

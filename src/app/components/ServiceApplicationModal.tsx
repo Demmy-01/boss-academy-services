@@ -15,6 +15,8 @@ import {
   Mail,
   Phone,
   Loader2,
+  Globe,
+  HelpCircle,
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { addApplication } from '../utils/db';
@@ -183,13 +185,18 @@ export default function ServiceApplicationModal({
   }, [config, serviceSlug]);
 
   // Determine dynamic steps
+  const isProofOfFunds = serviceSlug === 'proof-of-funds';
   const showBudget = serviceSlug.startsWith('study-');
   const showCountry =
-    serviceSlug.startsWith('study-') ||
-    serviceSlug.startsWith('visit-') ||
-    ['proof-of-funds', 'travel-insurance'].includes(serviceSlug);
+    !isProofOfFunds &&
+    (
+      serviceSlug.startsWith('study-') ||
+      serviceSlug.startsWith('visit-') ||
+      ['proof-of-funds', 'travel-insurance'].includes(serviceSlug)
+    );
 
-  const steps: StepType[] = ['contact', 'documents'];
+  const steps: StepType[] = ['contact'];
+  if (!isProofOfFunds) steps.push('documents');
   if (showBudget) steps.push('budget');
   if (showCountry) steps.push('country');
 
@@ -200,6 +207,9 @@ export default function ServiceApplicationModal({
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  // Proof-of-Funds extra fields
+  const [countryOfInterest, setCountryOfInterest] = useState('');
+  const [everAppliedForVisa, setEverAppliedForVisa] = useState<'yes' | 'no' | ''>('');
 
   // Documents state
   const [documents, setDocuments] = useState<DocumentField[]>([]);
@@ -231,6 +241,8 @@ export default function ServiceApplicationModal({
         setName('');
         setEmail('');
         setPhone('');
+        setCountryOfInterest('');
+        setEverAppliedForVisa('');
         setDocuments([]);
         setSelectedBudget(null);
         setSelectedCountry(null);
@@ -320,7 +332,12 @@ export default function ServiceApplicationModal({
   const countrySelected = showCountry ? (finalCountry !== null && finalCountry.length > 0) : true;
 
   const isStepValid = () => {
-    if (currentStep === 'contact') return isContactValid;
+    if (currentStep === 'contact') {
+      if (isProofOfFunds) {
+        return isContactValid && countryOfInterest.trim().length > 1 && everAppliedForVisa !== '';
+      }
+      return isContactValid;
+    }
     if (currentStep === 'documents') return areDocsValid;
     if (currentStep === 'budget') return budgetSelected;
     if (currentStep === 'country') return countrySelected;
@@ -364,7 +381,7 @@ export default function ServiceApplicationModal({
         serviceSlug,
         serviceTitle,
         budget: showBudget ? (BUDGET_OPTIONS.find(b => b.id === selectedBudget)?.range ?? null) : null,
-        country: showCountry ? finalCountry : null,
+        country: isProofOfFunds ? countryOfInterest : (showCountry ? finalCountry : null),
         files: filesToSave,
       });
 
@@ -645,7 +662,9 @@ export default function ServiceApplicationModal({
             {currentStep === 'contact' && (
               <div className="space-y-4">
                 <p className="text-sm mb-4" style={{ color: '#6B6760', fontWeight: 300, lineHeight: 1.6 }}>
-                  Please enter your contact details. This allows us to review your files and get in touch with you.
+                  {isProofOfFunds
+                    ? 'Please fill in your details below to register for the Proof of Funds webinar.'
+                    : 'Please enter your contact details. This allows us to review your files and get in touch with you.'}
                 </p>
 
                 {/* Name */}
@@ -698,6 +717,55 @@ export default function ServiceApplicationModal({
                     />
                   </div>
                 </div>
+
+                {/* Proof-of-Funds extra fields */}
+                {isProofOfFunds && (
+                  <>
+                    {/* Country of Interest */}
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider mb-2 text-foreground/80">
+                        Country of Interest
+                      </label>
+                      <div className="input-group flex items-center px-3 py-3">
+                        <Globe className="w-4 h-4 mr-3 text-muted-foreground" />
+                        <input
+                          type="text"
+                          className="flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground/60 text-foreground"
+                          placeholder="e.g. United Kingdom, Canada, Germany..."
+                          value={countryOfInterest}
+                          onChange={e => setCountryOfInterest(e.target.value)}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Ever Applied for Visa? */}
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider mb-2 text-foreground/80">
+                        <span className="flex items-center gap-1.5">
+                          <HelpCircle className="w-3.5 h-3.5" />
+                          Have you ever applied for a visa before?
+                        </span>
+                      </label>
+                      <div className="flex gap-3">
+                        {(['yes', 'no'] as const).map(option => (
+                          <button
+                            key={option}
+                            type="button"
+                            onClick={() => setEverAppliedForVisa(option)}
+                            className="flex-1 py-3 px-4 text-sm font-semibold rounded-lg border-2 transition-all"
+                            style={{
+                              borderColor: everAppliedForVisa === option ? '#e8400c' : 'rgba(13,17,23,0.1)',
+                              background: everAppliedForVisa === option ? 'rgba(232,64,12,0.06)' : '#fff',
+                              color: everAppliedForVisa === option ? '#e8400c' : '#6B6760',
+                            }}
+                          >
+                            {option === 'yes' ? 'Yes, I have' : 'No, first time'}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
             )}
 
