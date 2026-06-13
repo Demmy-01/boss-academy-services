@@ -19,6 +19,7 @@ export interface Application {
   serviceTitle: string;
   budget: string | null;
   country: string | null;
+  program: string | null;
   status: 'pending' | 'in-review' | 'contacted' | 'approved' | 'rejected';
   createdAt: string;
   files: ApplicationFile[];
@@ -106,6 +107,7 @@ export async function getApplications(): Promise<Application[]> {
         serviceTitle: row.service_title,
         budget: row.budget,
         country: row.country,
+        program: row.program || null,
         status: row.status as Application['status'],
         createdAt: row.created_at,
         files: filesData,
@@ -180,6 +182,7 @@ export async function addApplication(
         service_title: application.serviceTitle,
         budget: application.budget,
         country: application.country,
+        program: application.program ?? null,
         files_data: uploadedFiles,
       })
       .select()
@@ -206,6 +209,7 @@ export async function addApplication(
       serviceTitle: data.service_title,
       budget: data.budget,
       country: data.country,
+      program: data.program || null,
       status: data.status,
       createdAt: data.created_at,
       adminNotes: data.admin_notes || undefined,

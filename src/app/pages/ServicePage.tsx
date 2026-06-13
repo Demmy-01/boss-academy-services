@@ -22,6 +22,7 @@ import {
   Mail,
   FileText,
   ChevronRight,
+  TrendingUp,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
@@ -373,7 +374,7 @@ const allServices: Record<string, ServiceData> = {
     stats: [
       { value: '99.5%', label: 'Approval Rate' },
       { value: '3â€“5 Days', label: 'Turnaround' },
-      { value: '1,000+', label: 'Clients Served' },
+      { value: '100+', label: 'Clients Served' },
     ],
     features: [
       {
@@ -395,6 +396,11 @@ const allServices: Record<string, ServiceData> = {
         icon: CheckCircle2,
         title: 'Certified Translation',
         desc: 'Certified translation of financial documents from local languages to English or the required embassy language.',
+      },
+      {
+        icon: TrendingUp,
+        title: 'Investment Certificate',
+        desc: 'Documentation and certification of investment portfolios, stocks, bonds, and other assets to strengthen your financial profile.',
       },
     ],
     process: [

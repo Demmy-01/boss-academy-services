@@ -17,6 +17,7 @@ import {
   Loader2,
   Globe,
   HelpCircle,
+  GraduationCap,
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { addApplication } from '../utils/db';
@@ -32,7 +33,7 @@ interface DocumentField {
   optional?: boolean;
 }
 
-type StepType = 'contact' | 'documents' | 'budget' | 'country';
+type StepType = 'contact' | 'program' | 'documents' | 'budget' | 'country';
 
 const WHATSAPP_NUMBER = '2347059461257';
 
@@ -196,6 +197,7 @@ export default function ServiceApplicationModal({
     );
 
   const steps: StepType[] = ['contact'];
+  if (serviceSlug === 'study-europe') steps.push('program');
   if (!isProofOfFunds) steps.push('documents');
   if (showBudget) steps.push('budget');
   if (showCountry) steps.push('country');
@@ -214,10 +216,11 @@ export default function ServiceApplicationModal({
   // Documents state
   const [documents, setDocuments] = useState<DocumentField[]>([]);
 
-  // Budget/Country states
+  // Budget/Country/Programme states
   const [selectedBudget, setSelectedBudget] = useState<string | null>(null);
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
   const [customCountry, setCustomCountry] = useState('');
+  const [selectedProgram, setSelectedProgram] = useState<string | null>(null);
 
   // App states
   const [dragOverId, setDragOverId] = useState<string | null>(null);
@@ -247,6 +250,7 @@ export default function ServiceApplicationModal({
         setSelectedBudget(null);
         setSelectedCountry(null);
         setCustomCountry('');
+        setSelectedProgram(null);
         setIsComplete(false);
         setIsSubmitting(false);
       }, 300);
@@ -338,6 +342,7 @@ export default function ServiceApplicationModal({
       }
       return isContactValid;
     }
+    if (currentStep === 'program') return selectedProgram !== null;
     if (currentStep === 'documents') return areDocsValid;
     if (currentStep === 'budget') return budgetSelected;
     if (currentStep === 'country') return countrySelected;
@@ -382,6 +387,7 @@ export default function ServiceApplicationModal({
         serviceTitle,
         budget: showBudget ? (BUDGET_OPTIONS.find(b => b.id === selectedBudget)?.range ?? null) : null,
         country: isProofOfFunds ? countryOfInterest : (showCountry ? finalCountry : null),
+        program: serviceSlug === 'study-europe' ? selectedProgram : null,
         files: filesToSave,
       });
 
@@ -411,10 +417,19 @@ export default function ServiceApplicationModal({
   // Human-readable titles for steps
   const getStepTitle = () => {
     if (currentStep === 'contact') return 'Your Contact Details';
+    if (currentStep === 'program') return 'Choose Your Programme Level';
     if (currentStep === 'documents') return 'Upload Required Documents';
     if (currentStep === 'budget') return 'Your Estimated Budget';
     if (currentStep === 'country') return 'Choose Target Country';
     return '';
+  };
+
+  const STEP_LABELS: Record<StepType, string> = {
+    contact: 'Contact',
+    program: 'Programme',
+    documents: 'Documents',
+    budget: 'Budget',
+    country: 'Country',
   };
 
   return (
@@ -629,7 +644,7 @@ export default function ServiceApplicationModal({
                               transition: 'color 0.3s',
                             }}
                           >
-                            {stepName === 'contact' ? 'Contact' : stepName}
+                            {STEP_LABELS[stepName] ?? stepName}
                           </span>
                         </div>
                         {i < steps.length - 1 && (
@@ -766,6 +781,73 @@ export default function ServiceApplicationModal({
                     </div>
                   </>
                 )}
+              </div>
+            )}
+
+            {/* ═══ STEP: Programme Level ═══ */}
+            {currentStep === 'program' && (
+              <div>
+                <p className="text-sm mb-5" style={{ color: '#6B6760', fontWeight: 300, lineHeight: 1.6 }}>
+                  Select your intended programme level for studying in Europe. This helps us match you with the right universities and admission requirements.
+                </p>
+                <div className="space-y-3">
+                  {[
+                    { id: 'BSc', label: 'BSc', subtitle: "Bachelor's Degree — Undergraduate Programme" },
+                    { id: 'MSc', label: 'MSc', subtitle: "Master's Degree — Postgraduate Programme" },
+                    { id: 'PhD', label: 'PhD', subtitle: 'Doctoral Programme — Research Degree' },
+                  ].map(prog => (
+                    <button
+                      key={prog.id}
+                      type="button"
+                      onClick={() => setSelectedProgram(prog.id)}
+                      className={`budget-card w-full flex items-center gap-4 px-5 py-4 text-left ${
+                        selectedProgram === prog.id ? 'selected' : ''
+                      }`}
+                      style={{ borderRadius: '10px' }}
+                    >
+                      <div
+                        className="flex items-center justify-center w-12 h-12 rounded-full flex-shrink-0"
+                        style={{
+                          background: selectedProgram === prog.id ? '#e8400c' : 'rgba(13,17,23,0.04)',
+                          transition: 'background 0.2s',
+                        }}
+                      >
+                        <GraduationCap
+                          className="w-6 h-6"
+                          style={{
+                            color: selectedProgram === prog.id ? '#FAF8F4' : '#6B6760',
+                            transition: 'color 0.2s',
+                          }}
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <p
+                          className="text-base font-bold tracking-tight"
+                          style={{
+                            color: selectedProgram === prog.id ? '#e8400c' : '#0D1117',
+                            transition: 'color 0.2s',
+                          }}
+                        >
+                          {prog.label}
+                        </p>
+                        <p className="text-xs mt-0.5" style={{ color: '#6B6760' }}>
+                          {prog.subtitle}
+                        </p>
+                      </div>
+                      <div
+                        className="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0"
+                        style={{
+                          borderColor: selectedProgram === prog.id ? '#e8400c' : 'rgba(13,17,23,0.15)',
+                          transition: 'border-color 0.2s',
+                        }}
+                      >
+                        {selectedProgram === prog.id && (
+                          <div className="w-2.5 h-2.5 rounded-full" style={{ background: '#e8400c' }} />
+                        )}
+                      </div>
+                    </button>
+                  ))}
+                </div>
               </div>
             )}
 
@@ -1126,6 +1208,14 @@ export default function ServiceApplicationModal({
                             <span className="text-gray-400 block mb-0.5">Chosen Service</span>
                             <span className="font-semibold text-gray-800">{serviceTitle}</span>
                           </div>
+                          {selectedProgram && (
+                            <div>
+                              <span className="text-gray-400 block mb-0.5">Programme Level</span>
+                              <span className="font-semibold text-gray-800 flex items-center gap-1">
+                                <GraduationCap className="w-3.5 h-3.5 text-[#075e54]" /> {selectedProgram}
+                              </span>
+                            </div>
+                          )}
                           {showCountry && (
                             <div>
                               <span className="text-gray-400 block mb-0.5">Target Country</span>

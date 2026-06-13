@@ -37,6 +37,7 @@ import {
   RefreshCw,
   AlertCircle,
   FileSpreadsheet,
+  GraduationCap,
 } from 'lucide-react';
 import {
   getApplications,
@@ -752,6 +753,11 @@ export default function AdminDashboard() {
                                       {app.serviceTitle}
                                     </td>
                                     <td className="px-6 py-4.5 hidden sm:table-cell text-gray-400">
+                                      {app.program && (
+                                        <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-[#e8400c]/10 text-[#e8400c] text-xs rounded-md mr-1.5 font-semibold">
+                                          <GraduationCap className="w-3 h-3" />{app.program}
+                                        </span>
+                                      )}
                                       {app.budget && (
                                         <span className="inline-block px-2 py-0.5 bg-gray-800 text-gray-300 text-xs rounded-md mr-1.5 font-semibold">
                                           {app.budget}
@@ -856,6 +862,15 @@ export default function AdminDashboard() {
                               <span className="text-gray-500">Service:</span>
                               <span className="text-white font-medium">{selectedApp.serviceTitle}</span>
                             </div>
+                            {selectedApp.program && (
+                              <div className="flex justify-between items-center">
+                                <span className="text-gray-500">Programme:</span>
+                                <span className="inline-flex items-center gap-1.5 text-[#e8400c] font-bold">
+                                  <GraduationCap className="w-3.5 h-3.5" />
+                                  {selectedApp.program}
+                                </span>
+                              </div>
+                            )}
                             {selectedApp.budget && (
                               <div className="flex justify-between">
                                 <span className="text-gray-500">Budget:</span>
